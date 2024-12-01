@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server side for e-commerce project ",
+  "main": "server.js ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devmahmoudAdel/E-commerce.git"
+  },
+  "author": "mahmoudAdel|noorEldeen|hazem|ahmedcaba|omar|yousef",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devmahmoudAdel/E-commerce/issues"
+  },
+  "homepage": "https://github.com/devmahmoudAdel/E-commerce#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3"
+  }
+}
