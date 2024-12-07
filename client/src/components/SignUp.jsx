@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import "./signup.css";
+import SideImage2 from "../assets/Images/SideImage2.png";
 function SignUp() {
 //validate password
 function validatePassword(password) {
@@ -17,7 +18,7 @@ function handleFormSubmit(event) {
 }
   return (
     <div className="container">
-      <div className="side-img"><img src="../assets/Images/SideImage.png" alt="SideImage" /></div>
+      <div className="side-img"><img src={SideImage2} alt="SideImage" /></div>
       <div className="sign-form">
         <h2>Create an Account</h2>
         <p>Enter your details below</p>

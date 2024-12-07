@@ -1,14 +1,18 @@
 .container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   /* background-color: blue; */
   flex-grow: 1;
   padding: 10px 0;
 }
 .side-img {
-  width: 50vw;
+  width: 20%;
   /* height: 100vh; */
+}
+.side-img img {
+  width: 400px;
+  height: 400px;
 }
 .sign-form {
   /* width: 50vw; */
@@ -54,6 +58,7 @@ button {
   width: 90%;
   background-color: red;
   color: white;
+  font-size: 18px;
   font-weight: bold;
   border: none;
   padding: 10px 0;
@@ -80,8 +85,9 @@ button {
   .side-img{
     display: none;
   }
-  .sign-up-form {
+  .sign-form {
     width: 100%;
+    justify-content: center;
   }
 }
 button:hover {
