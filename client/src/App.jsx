@@ -5,7 +5,7 @@ import React from "react";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Error404 from "./components/Error404";
+import Error404 from "./components/Error404/Error404";
 import Products from "./components/Products";
 import Featured from "./components/Featured";
 import Categories from "./components/Categories";
@@ -26,9 +26,7 @@ function App() {
       <Header />
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
+        <Route path="/" element={
             <>
               <Categories />
               <Products />
