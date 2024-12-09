@@ -1,6 +1,6 @@
 function Products() {
   return (
-    <h2>Products</h2>
+    <h2>__Products__</h2>
   );
 }
 
