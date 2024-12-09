@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: blue; */
+  flex-grow: 1;
+  padding: 10px 0;
+}
+.side-img {
+  width: 20%;
+  /* height: 100vh; */
+}
+.side-img img {
+  width: 400px;
+  height: 400px;
+}
+.sign-form {
+  /* width: 50vw; */
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 50px;
+}
+.sign-up-form h2 {
+  color: black;
+  margin: 10px 0;
+}
+p {
+  display: block;
+  width: 300px;
+  margin: 0 auto 10px;
+  text-align: left;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+  gap: 10px;
+}
+input {
+
+  width: 300px;
+  height: 30px;
+  /* border-radius: 6px; */
+  border: none;
+  color: #4e4e4e;
+  font-size: 18px;
+  padding: 5px 8px;
+  border-bottom: 1px solid black;
+  outline: black;
+  background-color: white;
+}
+button {
+  width: 90%;
+  background-color: red;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.forget {
+  margin:10px 0;
+  color: black;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.forget:hover{
+  color:red;
+}
+.forget span {
+  font-weight: bold;
+  font-size: 15px;
+}
+@media (max-width: 767px) {
+  .side-img{
+    display: none;
+  }
+  .sign-form {
+    width: 100%;
+    justify-content: center;
+  }
+}
+button:hover {
+  background-color: #a30000;
+}
+
+/* LogIn */
+.log-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+.log-forgot button {
+  width: 50%;
+}
+.log-forgot a {
+  color: red;
+  font-weight: bold;
+}
+.log-forgot a:hover{
+  color: #a30000; 
+}

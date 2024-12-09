@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+}
+a {
+  color: white;
+  padding: 0px 10px;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+body,
+button,
+input,
+textarea {
+  border: 0;
+  outline: none;
+  padding: 0px;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
