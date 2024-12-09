@@ -1,6 +1,6 @@
 function Products() {
   return (
-    <h2>ManyProducts</h2>
+    <h2>_products</h2>
   );
 }
 
