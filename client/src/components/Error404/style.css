@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none; 
+}
+.container{
+    margin-top: 10rem;
+    display:flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-content:center;
+    row-gap:30px;
+}
+
+.errmessage{
+    font-weight: bold;
+    font-family: bold;
+    font-size: 6rem;
+    
+}
+
+.btn {
+    padding: 10px 20px; 
+    font-size: 1rem; 
+    font-weight: bold; 
+    color: #fff;
+    background-color: #e74c3c; 
+    border-radius: 10px; 
+    transition: background-color 0.3s; 
+    width:25%;
+}
+
+.btn:hover {
+    background-color: #c0392b;
+}
