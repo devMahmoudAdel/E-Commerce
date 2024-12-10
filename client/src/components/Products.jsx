@@ -61,6 +61,20 @@ const productsData = [
     "price": 24.99,
     "description": "Description for product 6",
     "image": product3Image
+  },
+  {
+    "id": 9,
+    "name": "Product 8",
+    "price": 24.99,
+    "description": "Description for product 6",
+    "image": product3Image
+  },
+  {
+    "id": 10,
+    "name": "Product 8",
+    "price": 24.99,
+    "description": "Description for product 6",
+    "image": product3Image
   }
 ];
 
