@@ -1,0 +1,85 @@
+footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  padding: 20px;
+  margin: 0 auto;
+  background-color: black;
+}
+footer > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 10px;
+  /* background-color: black; */
+  color: white;
+}
+footer > div > h3 {
+  margin-bottom: 10px;
+  color: #b6b6b6;
+} 
+h4 {
+  margin-bottom: 10px;
+  color: #b6b6b6;
+}
+footer > div > p,a {
+  margin: 5px 0;
+  letter-spacing: 1.2px;
+  font-size: 14px;
+  text-align: center;
+  color: #a3a3a3;
+}
+footer > div > .link:hover {
+  color: white;
+  cursor: pointer;
+}
+.imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 20px;
+  /* background-color: black; */
+  color: white;
+}
+.imgs .left-column img {
+  width: 70px;
+  height: 70px;
+}
+.imgs .right-column img{
+  width: 120px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 0;
+}
+.subscribe {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 10px;
+  border: 1px solid #a3a3a3;
+  border-radius: 8px;
+  padding: 5px 8px ;
+  /* background-color: black; */
+  /* color: white; */
+}
+.subscribe input {
+  width: 100%;
+  height: 35px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-right: 10px;
+  background-color: transparent;
+  outline: none;
+  color: white;
+}
+.subscribe input::placeholder {
+  color: #a3a3a3;
+  font-size: 14px;
+}
+.subscribe img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}

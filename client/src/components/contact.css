@@ -85,8 +85,13 @@ hr {
   border: 1px solid #333;
   border-radius: 5px;
   font-size: 14px;
+  outline: none;
   background-color: #fff;
   color: #333;
+}
+.contact-form input:focus {
+  border: 2px solid #333;
+  outline: none;
 }
 .contact-form .inputs {
   width: 100%;
