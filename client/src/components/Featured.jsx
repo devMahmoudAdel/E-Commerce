@@ -36,16 +36,14 @@ function Featured() {
       <h1 className="featured-header">Featured Products</h1>
       <div className="products-wrapper">
         <div className="left-column">
-          {featuredProducts.slice(0, 1).map(product => (
-            <div key={product.id} className="card big-card">
+            <div key={featuredProducts[0].id} className="card big-card">
               <div className="details">
-                <h2 className="name">{product.name}</h2>
-                <p className="description">{product.description}</p>
-                <p className="price">Price: ${product.price}</p>
+                <h2 className="name">{featuredProducts[0].name}</h2>
+                <p className="description">{featuredProducts[0].description}</p>
+                <p className="price">Price: ${featuredProducts[0].price}</p>
               </div>
-              <img src={product.image} alt={product.name} className="image" />
+              <img src={featuredProducts[0].image} alt={featuredProducts[0].name} className="image" />
             </div>
-          ))}
         </div>
         <div className="right-column">
           {featuredProducts.slice(1).map(product => (
