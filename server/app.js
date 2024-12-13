@@ -26,6 +26,9 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the API!" }); // Welcome message for any unmatched route
+});
 app.use("/user", UserRoute);
 app.use("/order", OrderRoute);
 app.use("/ads", AdsRoute);
@@ -36,6 +39,7 @@ app.use("/contact", ContactRoute);
 app.use("/admin", adminRoute);
 app.use("product", productRoute);
 app.use("/message", messageRoute);
+
 app.use(express.static("public"));
 
 module.exports = app;

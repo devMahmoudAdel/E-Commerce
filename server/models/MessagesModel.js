@@ -28,5 +28,10 @@ const messageSchema = new Schema({
     required: true,
     maxLength: 500,
   },
+  response: {
+    type: String,
+    default: null,
+    maxLength: 500,
+  },
 });
 module.exports = mongoose.model("Message", messageSchema);
