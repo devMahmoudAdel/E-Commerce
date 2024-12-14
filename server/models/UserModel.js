@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-import Wishlist from "./../../client/src/components/wishList/Wishlist";
 const validator = require("validator");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 const UserSchema = mongoose.Schema(
   {
@@ -9,7 +9,7 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      minlength: 6,
+      minlength: 4,
       validate: {
         validator: function (v) {
           return /^[a-zA-Z0-9]+$/.test(v);
@@ -42,6 +42,7 @@ const UserSchema = mongoose.Schema(
     confirmPassword: {
       type: String,
       required: true,
+      select: false,
       validate: {
         validator: function (v) {
           return this.password === v;
@@ -51,8 +52,6 @@ const UserSchema = mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      required: true,
-      unique: true,
       validate: {
         validator: function (v) {
           return validator.isMobilePhone(v, "ar-EG");
@@ -86,10 +85,55 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    passwordChangedAt: Date,
+    passwordResetToken: String,
+    passwordResetTokenExpires: Date,
   },
   {
     timestamps: true,
   }
 );
+
+UserSchema.pre("save", async function (next) {
+  console.log("pre save");
+  if (!this.isModified("password")) return next();
+  console.log("crypr");
+  this.password = await bcrypt.hash(this.password, 12);
+  this.confirmPassword = undefined;
+  next();
+});
+
+UserSchema.methods.hashPassword = async function (pass) {
+  return await bcrypt.hash(pass, 12);
+};
+
+UserSchema.methods.createResetPasswordToken = function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+  this.passwordResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  this.passwordResetTokenExpires = Date.now() + 100 * 60 * 1000;
+
+  return resetToken;
+};
+
+UserSchema.methods.comparePasswordInDB = async function (pswd, pswdDB) {
+  return await bcrypt.compare(pswd, pswdDB);
+};
+
+UserSchema.methods.isPasswordChanged = async function (JWTTimestamp) {
+  console.log(
+    "is password changed => " + JWTTimestamp + this.passwordChangedAt
+  );
+  if (this.passwordChangedAt) {
+    const pswdChangedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+    return JWTTimestamp < pswdChangedTimestamp;
+  }
+  return false;
+};
 
 module.exports = mongoose.model("users", UserSchema);

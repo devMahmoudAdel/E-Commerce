@@ -11,6 +11,8 @@ const OwnerRoute = require("./routes/OwnerRoute");
 const ContactRoute = require("./routes/contactRoute");
 const adminRoute = require("./routes/adminRoute");
 const productRoute = require("./routes/productRoute");
+const messageRoute = require("./routes/messagesRoute");
+
 let app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -24,6 +26,9 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the API!" }); // Welcome message for any unmatched route
+});
 app.use("/user", UserRoute);
 app.use("/order", OrderRoute);
 app.use("/ads", AdsRoute);
@@ -33,6 +38,8 @@ app.use("/owner", OwnerRoute);
 app.use("/contact", ContactRoute);
 app.use("/admin", adminRoute);
 app.use("product", productRoute);
+app.use("/message", messageRoute);
+
 app.use(express.static("public"));
 
 module.exports = app;
