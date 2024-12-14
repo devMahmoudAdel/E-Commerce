@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const util = require("util");
 const sendEmail = require("./../utils/email");
 const crypto = require("crypto");
+const Cart = require("../models/CartModel");
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET_STR, {
     expiresIn: process.env.LOGIN_EXPIRES,
@@ -163,4 +164,51 @@ exports.resetPassword = asyncErrorHandler(async (req, res, next) => {
   await user.save({ validateBeforeSave: true });
   // // 3. send json response
   res.status(200).json({ msg: "Password reset successfully" });
+});
+exports.isAdmin = asyncErrorHandler(async (req, res, next) => {
+  if (!req.user.isAdmin) {
+    return res.status(403).json({ msg: "User is not an admin" });
+  }
+  next();
+});
+exports.getAllOrders = asyncErrorHandler(async (req, res, next) => {
+  const user = req.user;
+  const orders = await Order.find({ customerId: user._id });
+  res.status(200).json({ data: orders });
+});
+exports.addToCart = asyncErrorHandler(async (req, res, next) => {
+  const user = req.user;
+  const product = await Product.findById(req.body.productId);
+  if (!product) return res.status(404).json({ msg: "Product not found" });
+  const userCart = await Cart.find({ userId: user._id });
+  if (!userCart) {
+    const newCart = new Cart({ userId: user._id });
+    await newCart.save();
+    userCart = newCart;
+  }
+  const existingCartItem = userCart.products.find(
+    (item) => item.productId.toString() === req.body.productId.toString()
+  );
+  if (existingCartItem) {
+    existingCartItem.quantity += req.body.quantity;
+    await userCart.save();
+    return res.status(200).json({ msg: "Quantity updated", data: userCart });
+  }
+  userCart.products.push({
+    productId: product._id,
+    quantity: req.body.quantity,
+  });
+  await userCart.save();
+  res.status(200).json({ msg: "Product added to cart", data: userCart });
+  // const existingCartItem =
+});
+
+exports.changeUserToAdmin = asyncErrorHandler(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { isAdmin: true },
+    { new: true }
+  );
+  if (!user) return res.status(404).json({ msg: "User not found" });
+  res.status(200).json({ msg: "User updated as admin", data: user });
 });

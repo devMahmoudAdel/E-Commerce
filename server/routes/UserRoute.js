@@ -14,11 +14,19 @@ router.route("/delete/:id").patch(); // مش هنمسح احنا هنعمل acti
 router
   .route("/changePassword")
   .patch(usercontroller.protect, usercontroller.changePassword); //NOOR
-router.route("/addTocart").post; //noor
+router
+  .route("/addTocart")
+  .post(usercontroller.protect, usercontroller.addToCart); //noor
+router
+  .route("/getAllOrders")
+  .get(usercontroller.protect, usercontroller.getAllOrders); //noor
 router.route("/getCart").get; //OMAR
 router.route("/addtoWishList").post; //AHMED
 router.route("/getwishList").get; //OMAR
-router.route("/getAllOrders").get; //noor
 router.route("/AddMoneyToWallet").patch; //OMAR
 router.route("/getAllAdress").get; //AHMED
+
+router.route("/changeUserToAdmin/id").patch(usercontroller.changeUserToAdmin); //NOOR
+router.route("/getAllAdmins").get(); //AHMED
+
 module.exports = router;

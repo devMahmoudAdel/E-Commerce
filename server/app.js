@@ -37,7 +37,7 @@ app.use("/aboutUs", aboutUsRoute);
 app.use("/owner", OwnerRoute);
 app.use("/contact", ContactRoute);
 app.use("/admin", adminRoute);
-app.use("product", productRoute);
+app.use("/product", productRoute);
 app.use("/message", messageRoute);
 
 app.use(express.static("public"));
