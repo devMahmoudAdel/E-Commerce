@@ -89,6 +89,12 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    walletbalance: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 100000,
+    },
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetTokenExpires: Date,
