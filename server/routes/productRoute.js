@@ -13,7 +13,7 @@ router
   .route("editInverntoryStock/:id")
   .patch(
     usercontroller.protect,
-    usercontroller.isAdmin,
+    usercontroller.isAdminforInteriorUse,
     productcontroller.editInverntoryStock
   ); //NOOR
 module.exports = router;

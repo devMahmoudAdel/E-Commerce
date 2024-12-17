@@ -1,5 +1,6 @@
 const express = require("express");
 const usercontroller = require("../controllers/UserController");
+const { route } = require("./OrderRoute");
 // controller import
 const router = express.Router();
 router.route("/register").post(usercontroller.register); //noor
@@ -26,7 +27,20 @@ router.route("/getwishList").get; //OMAR
 router.route("/AddMoneyToWallet").patch; //OMAR
 router.route("/getAllAdress").get; //AHMED
 
-router.route("/changeUserToAdmin/id").patch(usercontroller.changeUserToAdmin); //NOOR
+router
+  .route("/changeUserToAdmin/:id")
+  .patch(
+    usercontroller.protect,
+    usercontroller.isAdminforInteriorUse,
+    usercontroller.changeUserToAdmin
+  ); //NOOR
+router
+  .route("/changeAdminToUser/:id")
+  .patch(
+    usercontroller.protect,
+    usercontroller.isAdminforInteriorUse,
+    usercontroller.changeAdminToUser
+  ); //NOOR
 router.route("/getAllAdmins").get(); //AHMED
-
+router.route("/isAdmin").get(usercontroller.protect, usercontroller.isAdmin);
 module.exports = router;

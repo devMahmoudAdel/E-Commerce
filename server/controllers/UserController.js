@@ -5,6 +5,8 @@ const util = require("util");
 const sendEmail = require("./../utils/email");
 const crypto = require("crypto");
 const Cart = require("../models/CartModel");
+const Order = require("../models/OrdersModel");
+const Product = require("../models/BroductsModel");
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET_STR, {
     expiresIn: process.env.LOGIN_EXPIRES,
@@ -84,7 +86,6 @@ exports.protect = asyncErrorHandler(async (req, res, next) => {
   }
   console.log(token);
   if (!token) {
-    console.log(token);
     res.status(401).json("you are not logged in!");
   }
 
@@ -151,7 +152,7 @@ exports.resetPassword = asyncErrorHandler(async (req, res, next) => {
   if (!user) {
     return res.status(400).json({ msg: "Invalid token or expired token" });
   }
-  if (!req.body.password || req.body.confirmPassword) {
+  if (!req.body.password || !req.body.confirmPassword) {
     return res
       .status(400)
       .json({ msg: "Please provide a password and confirm password" });
@@ -159,17 +160,23 @@ exports.resetPassword = asyncErrorHandler(async (req, res, next) => {
   user.password = req.body.password;
   user.confirmPassword = req.body.confirmPassword;
 
-  user.resetPasswordToken = undefined;
-  user.resetPasswordTokenExpiresAt = undefined;
+  user.passwordResetToken = undefined;
+  user.passwordResetTokenExpires = undefined;
   await user.save({ validateBeforeSave: true });
   // // 3. send json response
   res.status(200).json({ msg: "Password reset successfully" });
+});
+exports.isAdminforInteriorUse = asyncErrorHandler(async (req, res, next) => {
+  if (!req.user.isAdmin) {
+    return res.status(403).json({ msg: "User is not an admin" });
+  }
+  next();
 });
 exports.isAdmin = asyncErrorHandler(async (req, res, next) => {
   if (!req.user.isAdmin) {
     return res.status(403).json({ msg: "User is not an admin" });
   }
-  next();
+  res.status(200).json({ msg: "User is admin" });
 });
 exports.getAllOrders = asyncErrorHandler(async (req, res, next) => {
   const user = req.user;
@@ -200,7 +207,6 @@ exports.addToCart = asyncErrorHandler(async (req, res, next) => {
   });
   await userCart.save();
   res.status(200).json({ msg: "Product added to cart", data: userCart });
-  // const existingCartItem =
 });
 
 exports.changeUserToAdmin = asyncErrorHandler(async (req, res, next) => {
@@ -211,4 +217,14 @@ exports.changeUserToAdmin = asyncErrorHandler(async (req, res, next) => {
   );
   if (!user) return res.status(404).json({ msg: "User not found" });
   res.status(200).json({ msg: "User updated as admin", data: user });
+});
+
+exports.changeAdminToUser = asyncErrorHandler(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { isAdmin: false },
+    { new: true }
+  );
+  if (!user) return res.status(404).json({ msg: "User not found" });
+  res.status(200).json({ msg: "Admin updated To User", data: user });
 });

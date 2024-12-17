@@ -9,7 +9,6 @@ const AdressRoute = require("./routes/AdressRoute");
 const aboutUsRoute = require("./routes/aboutUsRoute");
 const OwnerRoute = require("./routes/OwnerRoute");
 const ContactRoute = require("./routes/contactRoute");
-const adminRoute = require("./routes/adminRoute");
 const productRoute = require("./routes/productRoute");
 const messageRoute = require("./routes/messagesRoute");
 
@@ -36,7 +35,6 @@ app.use("/adress", AdressRoute);
 app.use("/aboutUs", aboutUsRoute);
 app.use("/owner", OwnerRoute);
 app.use("/contact", ContactRoute);
-app.use("/admin", adminRoute);
 app.use("/product", productRoute);
 app.use("/message", messageRoute);
 

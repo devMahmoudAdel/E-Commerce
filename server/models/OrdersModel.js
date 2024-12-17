@@ -18,6 +18,7 @@ const OrdseSchema = new mongoose.Schema(
       },
     },
     customerId: {
+      required: true,
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
@@ -103,11 +104,12 @@ const OrdseSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
-    canceledReason: {
+    trackingNumber: {
       type: String,
       default: null,
+      unique: true,
     },
-    trackingNumber: {
+    returnreason: {
       type: String,
       default: null,
     },
@@ -118,4 +120,3 @@ const OrdseSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("orders", OrdseSchema);
-
