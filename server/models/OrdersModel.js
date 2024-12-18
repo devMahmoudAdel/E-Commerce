@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const validator = require("validator");
 
 const OrdseSchema = new mongoose.Schema(
@@ -10,6 +11,8 @@ const OrdseSchema = new mongoose.Schema(
     phoneNumber: {
       type: String,
       required: true,
+
+
       validate: {
         validator: function (v) {
           return validator.isMobilePhone(v, "ar-EG");
@@ -18,7 +21,9 @@ const OrdseSchema = new mongoose.Schema(
       },
     },
     customerId: {
+
       required: true,
+
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
@@ -41,9 +46,11 @@ const OrdseSchema = new mongoose.Schema(
     },
     paymentMethod: {
       type: String,
+
       enum: ["cash on delivery", "vodafone cash", "instapay", "from wallet"],
       required: true,
       default: "cash on delivery",
+
     },
     deliveryAddress: {
       type: mongoose.Schema.Types.ObjectId,
@@ -79,13 +86,20 @@ const OrdseSchema = new mongoose.Schema(
 
     returnMaxTime: {
       type: Date,
+
       default: Date.now() + 1000000,
+
+      default: null,
+
     },
 
     EditMaxTime: {
       type: Date,
       default: null,
+
       default: Date.now() + 100000,
+
+
     },
 
     deliveryPhoneNumber: {
@@ -106,12 +120,14 @@ const OrdseSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+
     trackingNumber: {
       type: String,
       default: null,
       // unique: true,
     },
     returnreason: {
+
       type: String,
       default: null,
     },
@@ -120,4 +136,6 @@ const OrdseSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
 module.exports = mongoose.model("Order", OrdseSchema);
+

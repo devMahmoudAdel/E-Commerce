@@ -25,6 +25,7 @@ const BroductSchema = new mongoose.Schema(
       minlength: 10,
       maxlength: 1000,
     },
+
     images: [
       {
         originalName: {
@@ -41,6 +42,7 @@ const BroductSchema = new mongoose.Schema(
         },
       },
     ],
+
     price: {
       type: Number,
       required: true,
