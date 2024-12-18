@@ -14,6 +14,7 @@ function Navbar() {
         <li><Link to="contact">Contact</Link></li>
         <li><Link to="about">About</Link></li>
         <li><Link to="signup">Sign Up</Link></li>
+        <li><Link to="Admin">Admin</Link></li>
       </ul>
       </div>
       <div className="search">
