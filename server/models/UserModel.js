@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
+
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+
 
 const UserSchema = mongoose.Schema(
   {
@@ -9,7 +11,9 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+
       minlength: 4,
+
       validate: {
         validator: function (v) {
           return /^[a-zA-Z0-9]+$/.test(v);
@@ -42,7 +46,9 @@ const UserSchema = mongoose.Schema(
     confirmPassword: {
       type: String,
       required: true,
+
       select: false,
+
       validate: {
         validator: function (v) {
           return this.password === v;
@@ -52,6 +58,8 @@ const UserSchema = mongoose.Schema(
     },
     phoneNumber: {
       type: String,
+
+
       validate: {
         validator: function (v) {
           return validator.isMobilePhone(v, "ar-EG");
@@ -67,8 +75,10 @@ const UserSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "cart",
     },
+
     addresses: {
       type: [mongoose.Schema.Types.ObjectId],
+
       ref: "Address",
     },
     orders: [
@@ -85,6 +95,7 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
     isAdmin: {
       type: Boolean,
       default: false,
@@ -98,11 +109,13 @@ const UserSchema = mongoose.Schema(
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetTokenExpires: Date,
+
   },
   {
     timestamps: true,
   }
 );
+
 
 UserSchema.pre("save", async function (next) {
   console.log("pre save");
@@ -142,5 +155,6 @@ UserSchema.methods.isPasswordChanged = async function (JWTTimestamp) {
   }
   return false;
 };
+
 
 module.exports = mongoose.model("users", UserSchema);

@@ -95,7 +95,6 @@ exports.updateUserDetails = asyncErrorHandler(async (req, res, next) => {
     user._id.toString(),
     req.body
   );
-  console.log(updatedUser);
 
   if (!updatedUser || !user)
     return res.status(404).json({ msg: "User not found" });
@@ -156,7 +155,6 @@ exports.protect = asyncErrorHandler(async (req, res, next) => {
 
   // 4. if the Admin changeed password after the token was issued
   if (await user.isPasswordChanged(decodedToken.iat)) {
-    console.log(await user.isPasswordChanged(decodedToken.iat));
     res
       .status(401)
       .json("the password has been changed recently. please login again");
@@ -241,28 +239,31 @@ exports.getAllOrders = asyncErrorHandler(async (req, res, next) => {
 });
 exports.addToCart = asyncErrorHandler(async (req, res, next) => {
   const user = req.user;
-  const product = await Product.findById(req.params.productId);
+  const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).json({ msg: "Product not found" });
-  const userCart = await Cart.find({ userId: user._id });
+  const userCart = await Cart.findOne({ userId: user._id });
   if (!userCart) {
     const newCart = new Cart({ userId: user._id });
     await newCart.save();
     userCart = newCart;
   }
-  const existingCartItem = userCart.products.find(
-    (item) => item.productId.toString() === req.body.productId.toString()
+
+  let productArray = userCart.products;
+  const existingCartItem = productArray.find(
+    (item) => item.productId.toString() === req.params.id.toString()
   );
   if (existingCartItem) {
-    existingCartItem.quantity += req.body.quantity;
+    res.status(400).json({ msg: "product already exists in cart" });
+  } else {
+    productArray.push({
+      productId: product._id,
+      quantity: req.body.quantity,
+      price: product.price,
+    });
+    userCart.products = productArray;
     await userCart.save();
-    return res.status(200).json({ msg: "Quantity updated", data: userCart });
+    res.status(200).json({ msg: "Product added to cart", data: userCart });
   }
-  userCart.products.push({
-    productId: product._id,
-    quantity: req.body.quantity,
-  });
-  await userCart.save();
-  res.status(200).json({ msg: "Product added to cart", data: userCart });
 });
 
 exports.changeUserToAdmin = asyncErrorHandler(async (req, res, next) => {
@@ -298,14 +299,15 @@ exports.getCart = asyncErrorHandler(async (req, res, next) => {
 
 exports.addToWishList = asyncErrorHandler(async (req, res, next) => {
   const user = req.user;
-  const product = await Product.findById(req.params.productId);
+  const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).json({ msg: "Product not found" });
-  if (user.wishList.contains(product._id)) {
+  console.log(user.Wishlist);
+  if (user.Wishlist.includes(product._id)) {
     return res
       .status(200)
       .json({ msg: "Product already in wishlist", data: user });
   }
-  user.wishList.push(product._id);
+  user.Wishlist.push(product._id);
   await user.save();
   res.status(200).json({ msg: "Product added to wishlist", data: user });
 });
@@ -318,8 +320,8 @@ exports.getwishList = asyncErrorHandler(async (req, res, next) => {
 
 exports.DeleteFormWishList = asyncErrorHandler(async (req, res, next) => {
   const user = req.user;
-  const productId = req.params.productId;
-  user.wishList = user.wishList.filter((id) => id.toString() !== productId);
+  const productId = req.params.id;
+  user.Wishlist = user.Wishlist.filter((id) => id.toString() !== productId);
   await user.save();
   res.status(200).json({ msg: "Product removed from wishlist", data: user });
 });
@@ -370,14 +372,21 @@ exports.getAllAdmins = asyncErrorHandler(async (req, res, next) => {
 
 exports.DeleteFromCart = asyncErrorHandler(async (req, res, next) => {
   const user = req.user;
-  const productId = req.params.productId;
-  const userCart = Cart.findOne({ userId: user._id });
+  const productId = req.params.id;
+  const userCart = await Cart.findOne({ userId: user._id });
   if (!userCart) return res.status(404).json({ msg: "Cart not found" });
+  if (
+    !userCart.products.find((item) => item.productId.toString() === productId)
+  ) {
+    return res
+      .status(404)
+      .json({ msg: "Product not found in cart", data: userCart });
+  }
   userCart.products = userCart.products.filter(
     (item) => item.productId.toString() !== productId
   );
-  await user.save();
-  res.status(200).json({ msg: "Product removed from cart", data: user });
+  await userCart.save();
+  res.status(200).json({ msg: "Product removed from cart", data: userCart });
 });
 
 exports.updateUserDetailsForUser = asyncErrorHandler(async (req, res, next) => {

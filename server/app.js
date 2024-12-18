@@ -11,6 +11,10 @@ const OwnerRoute = require("./routes/OwnerRoute");
 const ContactRoute = require("./routes/contactRoute");
 const productRoute = require("./routes/productRoute");
 const messageRoute = require("./routes/messagesRoute");
+// import { v2 as cloudinary } from "cloudinary";
+const cloudinary = require("cloudinary").v2;
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 
 let app = express();
 app.use(express.json());
@@ -24,6 +28,13 @@ app.use(
     withCredentials: true,
   })
 );
+
+app.use(express.urlencoded({ extended: true }));
+cloudinary.config({
+  cloud_name: process.env.cloudName,
+  api_key: process.env.APIKey,
+  api_secret: process.env.APISecret,
+});
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the API!" }); // Welcome message for any unmatched route

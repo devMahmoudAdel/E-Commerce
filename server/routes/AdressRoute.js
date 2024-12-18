@@ -1,8 +1,18 @@
 const express = require("express");
 const router = express.Router();
-
-router.route("/createAdress").post(); //OMAR
-router.route("/editAdress/:id").post(); //AHMED
-router.route("/DeleteAdress/:id").get(); //OMAR
+const userController = require("./../controllers/UserController");
+const adressController = require("./../controllers/AdressController");
+router
+  .route("/createAdress")
+  .post(userController.protect, adressController.createAdress);
+router
+  .route("/editAdress/:id")
+  .patch(userController.protect, adressController.editAdress); //AHMED
+router
+  .route("/DeleteAdress/:id")
+  .delete(userController.protect, adressController.deleteAdress); //OMAR
+router
+  .route("/getAdress/:id")
+  .get(userController.protect, adressController.getAdress); //OMAR
 
 module.exports = router;
