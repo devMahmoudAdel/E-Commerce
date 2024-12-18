@@ -67,8 +67,8 @@ const UserSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "cart",
     },
-    address: {
-      type: mongoose.Schema.Types.ObjectId,
+    addresses: {
+      type: [mongoose.Schema.Types.ObjectId],
       ref: "Address",
     },
     orders: [
@@ -84,6 +84,16 @@ const UserSchema = mongoose.Schema(
     isActive: {
       type: Boolean,
       default: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    walletbalance: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 100000,
     },
     passwordChangedAt: Date,
     passwordResetToken: String,
@@ -123,9 +133,6 @@ UserSchema.methods.comparePasswordInDB = async function (pswd, pswdDB) {
 };
 
 UserSchema.methods.isPasswordChanged = async function (JWTTimestamp) {
-  console.log(
-    "is password changed => " + JWTTimestamp + this.passwordChangedAt
-  );
   if (this.passwordChangedAt) {
     const pswdChangedTimestamp = parseInt(
       this.passwordChangedAt.getTime() / 1000,
