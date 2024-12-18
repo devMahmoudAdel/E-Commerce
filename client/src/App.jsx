@@ -19,7 +19,7 @@ import ProducDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
-import Admin from "./components/Admin";
+import Admin from "./components/Admin/Admin";
 
 function App() {
   return (
