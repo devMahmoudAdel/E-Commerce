@@ -2,67 +2,58 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function EditItem(){
-    const { studentid } = useParams(); 
+    const { itemid } = useParams(); 
     const [id, setId] = useState("");
     const [name, setName] = useState("");
-    const [place, setPlace] = useState("");
-    const [phone, setPhone] = useState("");
+    const [description, setDescription] = useState("");
+    const [imgLink, setImgLink] = useState("");
     const [validation, setValidation] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:8000/students/" + studentid)
+        fetch("http://localhost:8000/items/" + itemid)
         .then((res) => res.json())
         .then((data) => {
             setId(data.id);
             setName(data.name);
-            setPlace(data.place);
-            setPhone(data.phone);
+            setDescription(data.description);
+            setImgLink(data.imgLink);
         })
         .catch((err) => console.log(err.message));
-    }, [studentid]);
+    }, [itemid]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const studentData = { id, name, place, phone };
+        const itemData = { id, name, description, imgLink };
         
-        fetch("http://localhost:8000/students/" + studentid, {
+        fetch("http://localhost:8000/items/" + itemid, {
             method: 'PUT',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(studentData)
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(itemData)
         })
         .then((res) => {
             if (res.ok) {
-                // If the ID has changed, delete the old record and create a new one
-                if (studentid !== id) {
-                    fetch("http://localhost:8000/students/" + studentid, {
+                if (itemid !== id) {
+                    fetch("http://localhost:8000/items/" + itemid, {
                         method: 'DELETE',
                     })
                     .then(() => {
-                        fetch("http://localhost:8000/students", {
+                        fetch("http://localhost:8000/items", {
                             method: 'POST',
-                            headers: {
-                                "content-type": "application/json"
-                            },
-                            body: JSON.stringify(studentData)
+                            headers: { "content-type": "application/json" },
+                            body: JSON.stringify(itemData)
                         })
                         .then((res) => {
                             if (res.ok) {
-                                alert("Student Data Updated successfully");
+                                alert("Item Updated successfully");
                                 navigate("/admin");
-                            } else {
-                                alert("Failed to update student data");
                             }
                         });
                     });
                 } else {
-                    alert("Student Data Updated successfully");
+                    alert("Item Updated successfully");
                     navigate("/admin");
                 }
-            } else {
-                alert("Failed to update student data");
             }
         })
         .catch((err) => console.log(err.message));
@@ -70,23 +61,24 @@ export default function EditItem(){
 
     return (
         <div className="container">
-            <h2>Edit Student Details</h2>
+            <h2>Edit Item Details</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="id">ID:</label>
-                <input type="text" id="id" name="id" required value={id} onChange={e => setId(e.target.value)} onMouseDown={() => setValidation(true)} />
-                {id.length === 0 && validation && <span className="errorMsg">Please Enter your id</span>}
+                <input type="text" id="id" required value={id} onChange={e => setId(e.target.value)} onMouseDown={() => setValidation(true)} />
+                {id.length === 0 && validation && <span className="errorMsg">Please Enter ID</span>}
 
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" required value={name} onChange={e => setName(e.target.value)} onMouseDown={() => setValidation(true)} />
-                {name.length === 0 && validation && <span className="errorMsg">Please Enter your name</span>}
+                <input type="text" id="name" required value={name} onChange={e => setName(e.target.value)} onMouseDown={() => setValidation(true)} />
+                {name.length === 0 && validation && <span className="errorMsg">Please Enter Name</span>}
 
-                <label htmlFor="place">Place:</label>
-                <input type="text" id="place" name="place" required value={place} onChange={e => setPlace(e.target.value)} onMouseDown={() => setValidation(true)} />
-                {place.length === 0 && validation && <span className="errorMsg">Please Enter your place</span>}
+                <label htmlFor="description">Description:</label>
+                <input type="text" id="description" required value={description} onChange={e => setDescription(e.target.value)} onMouseDown={() => setValidation(true)} />
+                {description.length === 0 && validation && <span className="errorMsg">Please Enter Description</span>}
 
-                <label htmlFor="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" required value={phone} onChange={e => setPhone(e.target.value)} onMouseDown={() => setValidation(true)} />
-                {phone.length === 0 && validation && <span className="errorMsg">Please Enter your mobile number</span>}
+                <label htmlFor="imgLink">Image Link:</label>
+                <input type="text" id="imgLink" required value={imgLink} onChange={e => setImgLink(e.target.value)} onMouseDown={() => setValidation(true)} />
+                {imgLink.length === 0 && validation && <span className="errorMsg">Please Enter Image Link</span>}
+
                 <div>
                     <button className="btn btn-save">Update</button>
                     <Link to=".." className="btn btn-back">Back</Link>

@@ -1,22 +1,16 @@
 {
-  "students": [
+  "items": [
     {
-      "id": "123",
-      "name": "124",
-      "place": "12",
-      "phone": "12"
+      "id": "1",
+      "name": "Sample Item",
+      "description": "This is a sample item description",
+      "imgLink": "https://example.com/image.jpg"
     },
     {
-      "id": "asdf",
-      "name": "asdf",
-      "place": "asdf",
-      "phone": "oen"
-    },
-    {
-      "id": "adfdfdfdfdfdf",
-      "name": "asdf",
-      "place": "asdf",
-      "phone": "asdf"
+      "id": "12",
+      "name": "123",
+      "description": "asdf",
+      "imgLink": "asdf"
     }
   ]
 }

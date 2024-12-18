@@ -9,8 +9,8 @@ function AdminApp() {
     <div>
       <Routes>
         <Route path="/" element={<ItemTable />} />
-        <Route path="student/create" element={<CreateItem />} />
-        <Route path="student/edit/:studentid" element={<EditItem />} />
+        <Route path="item/create" element={<CreateItem />} />
+        <Route path="item/edit/:itemid" element={<EditItem />} />
       </Routes>
     </div>
   );
