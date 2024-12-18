@@ -19,6 +19,8 @@ import ProducDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
+import Admin from "./components/Admin";
+
 function App() {
   return (
 // <<<<<<< Updated upstream
@@ -39,6 +41,9 @@ function App() {
         <Route path="resetpassword" element={<ResetPassword />} />
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="contact" element={<Contact />} />
+        // admin
+        <Route path="admin" element={<Admin />} />
+
         <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<CheckOut />} />
