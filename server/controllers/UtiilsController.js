@@ -1,5 +1,5 @@
 let token;
-import { js } from "@eslint/js";
+const asyncErrorHandler = require("./../utils/asynsErrorHandler");
 exports.protect = asyncErrorHandler(async (req, res, next) => {
   console.log("protect entered");
   // 1. read the token & check if exist
@@ -33,5 +33,12 @@ exports.protect = asyncErrorHandler(async (req, res, next) => {
 
   req.admin = admin;
 
+  next();
+});
+
+exports.checkImage = asyncErrorHandler(async (req, res, next) => {
+  if (!req.file) {
+    return res.status(400).json({ msg: "Please upload an image file" });
+  }
   next();
 });
