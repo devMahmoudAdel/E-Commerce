@@ -40,11 +40,13 @@ router
   .route("/get/:id")
   .get(usercontroller.protect, productcontroller.getproduct); //OMAR
 router
-  .route("getAll")
+  .route("/getAll")
   .get(usercontroller.protect, productcontroller.getAllproduct); //AHMED
-router.route("getByCategory/:category").get(productcontroller.getByCategory); //NOOR
 router
-  .route("editInverntoryStock/:id")
+  .route("/getByCategory/:category")
+  .get(usercontroller.protect, productcontroller.getByCategory); //NOOR
+router
+  .route("/editInverntoryStock/:id")
   .patch(
     usercontroller.protect,
     usercontroller.isAdminforInteriorUse,
