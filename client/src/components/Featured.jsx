@@ -25,7 +25,7 @@ const featuredProducts = [
     id: 3,
     name: "Product 3",
     price: 19.99,
-    description: "Description for product 3",
+    description: "Description for product 3,3",
     image: product3Image
   }
 ];
