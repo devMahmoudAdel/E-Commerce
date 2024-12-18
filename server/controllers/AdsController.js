@@ -1,5 +1,5 @@
 const Ads = require("./../models/AdsFornavModel");
-const asyncErrorHandler = requrie("./../utils/asynsErrorHandler.js");
+const asyncErrorHandler = require("./../utils/asynsErrorHandler");
 const cloudinary = require("cloudinary").v2;
 exports.createAd = asyncErrorHandler(async (req, res, next) => {
   let uploadedFile = await cloudinary.uploader.upload(req.file.path, {
