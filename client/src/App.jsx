@@ -19,7 +19,11 @@ import ProducDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
+//admin imports old
 import Admin from "./components/Admin/Admin";
+//adminn imports 
+import AdminApp from './components/adminn/AdminApp';
+
 
 function App() {
   return (
@@ -28,7 +32,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={
-            <>
+             <>
               <Categories />
               <Products />
               <Featured />
@@ -40,13 +44,12 @@ function App() {
         <Route path="resetpassword" element={<ResetPassword />} />
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="contact" element={<Contact />} />
-        // admin
-        <Route path="admin" element={<Admin />} />
         <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<CheckOut />} />
         <Route path="productdetails" element={<ProducDetails />} />
         <Route path="*" element={<Error404 />} />
+        <Route path="/admin/*" element={<AdminApp />} />
       </Routes>
       <Footer />
     </BrowserRouter>
