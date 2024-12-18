@@ -1,23 +1,26 @@
 .container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   /* background-color: blue; */
-  flex-grow: 1;
+  /* flex-grow: 1; */
   padding: 10px 0;
 }
 .side-img {
-  width: 20%;
+  width: 30%;
   /* height: 100vh; */
 }
 .side-img img {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
 }
 .sign-form {
   /* width: 50vw; */
   /* height: 100vh; */
   display: flex;
+  /* flex-grow: 1; */
+  height: 80%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -29,7 +32,7 @@
 }
 p {
   display: block;
-  width: 300px;
+  max-width: 300px;
   margin: 0 auto 10px;
   text-align: left;
 }
@@ -47,16 +50,25 @@ input {
   height: 30px;
   /* border-radius: 6px; */
   border: none;
-  color: #4e4e4e;
+  color: black;
   font-size: 18px;
-  padding: 5px 8px;
-  border-bottom: 1px solid black;
-  outline: black;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 6px;
+  outline: none;
   background-color: white;
+}
+input::placeholder{
+  color: #333;
+  font-size: 10x;
+}
+input:focus {
+  border: 2px solid black;
+  border-radius: 6px;
 }
 button {
   width: 90%;
-  background-color: red;
+  background-color: #be0d0d;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -75,7 +87,7 @@ button {
   transition: 0.3s;
 }
 .forget:hover{
-  color:red;
+  font-weight: bold;
 }
 .forget span {
   font-weight: bold;
@@ -91,7 +103,7 @@ button {
   }
 }
 button:hover {
-  background-color: #a30000;
+  background-color: #ca0000d2;
 }
 
 /* LogIn */
@@ -105,9 +117,9 @@ button:hover {
   width: 50%;
 }
 .log-forgot a {
-  color: red;
-  font-weight: bold;
+  color: #be0d0d;
+  /* font-weight: bold; */
 }
 .log-forgot a:hover{
-  color: #a30000; 
+  font-weight: bold; 
 }

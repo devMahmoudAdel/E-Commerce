@@ -31,10 +31,10 @@ function Navbar() {
             <span></span>
         </span>
         <ul>
-            <li><a href="#services">services</a></li>
-            <li><a href="#portfolio">portfolio</a></li>
-            <li><a href="#aAbout">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/contact">contact</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/signup">Sign Up</Link></li>
         </ul>
     </div>
     </div>

@@ -1,96 +1,69 @@
-import React, { useState } from 'react';
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+import React, { useState } from "react";
 
-  const handleSubmit = (e) => {
+const ResetPassword = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage(""); // Clear previous messages
+    setIsLoading(true);
 
-    // Clear previous messages
-    setError('');
-    setSuccess('');
+    // Simulate API request (Replace with your API logic)
+    try {
+      // Mock API call
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    // Validate email
-    if (!email) {
-      setError('Email is required.');
-      return;
+      setMessage("A password reset link has been sent to your email.");
+    } catch (error) {
+      setMessage("Failed to send reset link. Please try again later.");
+    } finally {
+      setIsLoading(false);
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-
-    // Simulate an API call
-    setTimeout(() => {
-      setSuccess('If this email exists in our system, a password reset link has been sent.');
-      setEmail(''); // Clear email field after success
-    }, 1000);
   };
 
   return (
-    <div style={styles.container}>
+    <div style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center" }}>
       <h2>Forgot Password</h2>
-      <p>Enter your email address below, and we'll send you a link to reset your password.</p>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.inputGroup}>
-          <label htmlFor="email">Email Address</label>
+      <form onSubmit={handleSubmit}>
+        <div style={{ marginBottom: "15px" }}>
           <input
             type="email"
-            id="email"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
             required
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              fontSize: "16px",
+            }}
           />
         </div>
-        {error && <p style={styles.error}>{error}</p>}
-        {success && <p style={styles.success}>{success}</p>}
-        <button type="submit" style={styles.button}>
-          Send Reset Link
+        <button
+          type="submit"
+          disabled={isLoading}
+          style={{
+            width: "100%",
+            padding: "10px",
+            backgroundColor: "#007BFF",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            fontSize: "16px",
+            cursor: isLoading ? "not-allowed" : "pointer",
+          }}
+        >
+          {isLoading ? "Sending..." : "Send Reset Link"}
         </button>
       </form>
+      {message && <p style={{ marginTop: "20px", color: "green" }}>{message}</p>}
     </div>
   );
 };
 
-const styles = {
-  container: {
-    maxWidth: '400px',
-    margin: '0 auto',
-    padding: '20px',
-    textAlign: 'center',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-  },
-  inputGroup: {
-    textAlign: 'left',
-  },
-  error: {
-    color: 'red',
-    fontSize: '14px',
-  },
-  success: {
-    color: 'green',
-    fontSize: '14px',
-  },
-  button: {
-    padding: '10px 20px',
-    backgroundColor: '#007BFF',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
-};
-
-export default ForgotPassword;
+export default ResetPassword;

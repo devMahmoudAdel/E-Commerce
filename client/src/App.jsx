@@ -36,6 +36,7 @@ function App() {
         />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
+        <Route path="resetpassword" element={<ResetPassword />} />
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
