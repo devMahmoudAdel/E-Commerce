@@ -4,6 +4,7 @@ const asynsErrorHandler = require("../utils/asynsErrorHandler");
 exports.createOrder = asynsErrorHandler(async (req, res, next) => {
   const user = req.user;
   const newOrder = await new Order(req.body);
+  await newOrder.save();
   res.status(201).json({ data: newOrder });
 });
 

@@ -9,7 +9,6 @@ if (process.env.NODE_ENV == "production") {
 } else if (process.env.NODE_ENV == "development") {
   dbnamee = "E-commerce_Dev";
 }
-
 const app = require("./app");
 mongoose.connect(process.env.CONN_STR, { dbName: dbnamee }).then((CONN) => {
   console.log("DB COnnection Successful");

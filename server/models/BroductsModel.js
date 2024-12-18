@@ -25,9 +25,22 @@ const BroductSchema = new mongoose.Schema(
       minlength: 10,
       maxlength: 1000,
     },
-    images: {
-      type: [String],
-    },
+    images: [
+      {
+        originalName: {
+          type: String,
+        },
+        secure_url: {
+          type: String,
+        },
+        bytes: {
+          type: Number,
+        },
+        format: {
+          type: String,
+        },
+      },
+    ],
     price: {
       type: Number,
       required: true,
