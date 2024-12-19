@@ -21,5 +21,5 @@ router
   .delete(userController.protect, ContactController.calldelete); //OMAR
 router
   .route("write/delete/:id")
-  .delete(userController, ContactController.writedelete); //OMAR
+  .delete(userController.protect, ContactController.writedelete); //OMAR
 module.exports = router;
