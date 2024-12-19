@@ -15,7 +15,7 @@ import LogIn from "./components/LogIn";
 import Wishlist from "./components/wishList/Wishlist";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import ProducDetails from "./components/ProductDetails";
+import ProducDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
