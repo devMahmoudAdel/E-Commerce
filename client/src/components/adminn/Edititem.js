@@ -7,6 +7,7 @@ export default function EditItem(){
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [imgLink, setImgLink] = useState("");
+    const [plus, setPlus] = useState("");
     const [validation, setValidation] = useState(false);
     const navigate = useNavigate();
 
@@ -18,13 +19,14 @@ export default function EditItem(){
             setName(data.name);
             setDescription(data.description);
             setImgLink(data.imgLink);
+            setPlus(data.plus);
         })
         .catch((err) => console.log(err.message));
     }, [itemid]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const itemData = { id, name, description, imgLink };
+        const itemData = { id, name, description, imgLink, plus };
         
         fetch("http://localhost:8000/items/" + itemid, {
             method: 'PUT',
@@ -79,6 +81,10 @@ export default function EditItem(){
                 <input type="text" id="imgLink" required value={imgLink} onChange={e => setImgLink(e.target.value)} onMouseDown={() => setValidation(true)} />
                 {imgLink.length === 0 && validation && <span className="errorMsg">Please Enter Image Link</span>}
 
+                <label htmlFor="plus">Plus:</label>
+                <input type="text" id="plus" required value={plus} onChange={e => setPlus(e.target.value)} onMouseDown={() => setValidation(true)} />
+                {plus.length === 0 && validation && <span className="errorMsg">Please Enter Plus Value</span>}
+                
                 <div>
                     <button className="btn btn-save">Update</button>
                     <Link to=".." className="btn btn-back">Back</Link>

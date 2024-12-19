@@ -7,11 +7,12 @@ export default function CreateItem(){
     const [description, setDescription] = useState("");
     const [imgLink, setImgLink] = useState("");
     const [validation, setValidation] = useState(false);
+    const [plus, setPlus] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const itemData = { id, name, description, imgLink };
+        const itemData = { id, name, description, imgLink, plus };
         
         fetch("http://localhost:8000/items", {
             method: 'POST',
@@ -50,6 +51,11 @@ export default function CreateItem(){
                 <label htmlFor="imgLink">Image Link:</label>
                 <input type="text" id="imgLink" name="imgLink" required value={imgLink} onChange={e => setImgLink(e.target.value)} onMouseDown={() => setValidation(true)} />
                 {imgLink.length === 0 && validation && <span className="errorMsg">Please Enter your image link</span>}
+
+                <label htmlFor="plus">Plus:</label>
+                <input type="text" id="plus" name="plus" required value={plus} onChange={e => setPlus(e.target.value)} onMouseDown={() => setValidation(true)} />
+                {plus.length === 0 && validation && <span className="errorMsg">Please Enter plus value</span>}
+                
                 <div>
                     <button className="btn btn-save">Save</button>
                     <Link to=".." className="btn btn-back">Back</Link>

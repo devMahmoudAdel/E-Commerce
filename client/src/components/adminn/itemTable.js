@@ -42,6 +42,7 @@ export default function ItemTable(){
                             <th>Name</th>
                             <th>Description</th>
                             <th>Image</th>
+                            <th>Plus</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -53,6 +54,7 @@ export default function ItemTable(){
                                 <td>{item.name}</td>
                                 <td>{item.description}</td>
                                 <td><img src={item.imgLink} alt={item.name} style={{width: "50px", height: "50px"}}/></td>
+                                <td>{item.plus}</td>
                                 <td>
                                     <button onClick={()=>{EditDetails(item.id)}} className="btn btn-primary">Edit</button>
                                     <button onClick={()=>{RemoveDetails(item.id)}} className="btn btn-danger">Delete</button>
