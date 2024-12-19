@@ -23,5 +23,9 @@ router
     userController.isAdminforInteriorUse,
     adsControlller.createAd
   ); //OMAR
+router.route("/editAd/:id").post(userController.protect, AdsController.editAd); //OMAR
+router
+  .route("/changeActivation/:id")
+  .post(userController.protect, AdsController.changeActivation); //OMAR
 
 module.exports = router;

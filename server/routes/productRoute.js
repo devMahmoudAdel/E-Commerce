@@ -40,6 +40,7 @@ router
   .route("/get/:id")
   .get(usercontroller.protect, productcontroller.getproduct); //OMAR
 router.route("/getAll").get(productcontroller.getAllproduct); //AHMED
+
 router
   .route("/getByCategory/:category")
   .get(usercontroller.protect, productcontroller.getByCategory); //NOOR

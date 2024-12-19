@@ -1,13 +1,25 @@
 const express = require("express");
 const router = express.Router();
-
-router.route("call/create").post(); //AHEMD
-router.route("write/create").post(); //OMAR
-
-router.route("call/edit/:id").patch(); //AHEMD
-router.route("write/edit/:id").patch(); //OMAR
-
-router.route("call/delete/:id").get(); //AHEMD
-router.route("write/delete/:id").get(); //OMAR
-
+const ContactCall = require("../models/ConatctCallModel");
+const ContactWrite = require("../models/ConatctWriteModel");
+const userController = require("../controllers/UserController");
+const ContactController = require("../controllers/ContactController");
+router
+  .route("call/create")
+  .post(userController.protect, ContactController.callcreate); //OMAR
+router
+  .route("write/create")
+  .post(userController.protect, ContactController.writecreate); //OMAR
+router
+  .route("call/edit/:id")
+  .patch(userController.protect, ContactController.calledit); //OMAR
+router
+  .route("write/edit/:id")
+  .patch(userController.protect, ContactController.writeedit); //OMAR
+router
+  .route("call/delete/:id")
+  .delete(userController.protect, ContactController.calldelete); //OMAR
+router
+  .route("write/delete/:id")
+  .delete(userController, ContactController.writedelete); //OMAR
 module.exports = router;
