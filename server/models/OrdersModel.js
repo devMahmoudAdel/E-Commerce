@@ -12,7 +12,6 @@ const OrdseSchema = new mongoose.Schema(
       type: String,
       required: true,
 
-
       validate: {
         validator: function (v) {
           return validator.isMobilePhone(v, "ar-EG");
@@ -21,16 +20,35 @@ const OrdseSchema = new mongoose.Schema(
       },
     },
     customerId: {
-
       required: true,
-
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
-    products: {
-      type: [mongoose.Schema.Types.ObjectId],
-      required: true,
-    },
+    products: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "products",
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        totalPrice: {
+          type: Number,
+          required: true,
+          default: 0,
+          validate: {
+            validator: function (v) {
+              return v > 0;
+            },
+            message: "{VALUE} must be a positive number",
+          },
+        },
+      },
+    ],
+
     totalPrice: {
       type: Number,
       required: true,
@@ -41,16 +59,21 @@ const OrdseSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Pending", "Shipped", "Delivered", "canceled"],
+      enum: [
+        "Pending",
+        "Shipped",
+        "Delivered",
+        "canceled",
+        "returning",
+        "returned",
+      ],
       default: "Pending",
     },
     paymentMethod: {
       type: String,
-
       enum: ["cash on delivery", "vodafone cash", "instapay", "from wallet"],
       required: true,
       default: "cash on delivery",
-
     },
     deliveryAddress: {
       type: mongoose.Schema.Types.ObjectId,
@@ -62,7 +85,7 @@ const OrdseSchema = new mongoose.Schema(
     },
     deliveryStatus: {
       type: String,
-      enum: ["Pending", "In Transit", "Delivered", "Returned", "Cancelled"],
+      enum: ["Pending", "In Transit", "Delivered", "Cancelled"],
       default: "Pending",
     },
     isReturn: {
@@ -78,19 +101,34 @@ const OrdseSchema = new mongoose.Schema(
       enum: ["Pending", "Requested", "Canceled", "Returned"],
       default: "Pending",
     },
-    returnedProduct: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: "products",
-      default: null,
-    },
+    returnedProduct: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "products",
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        totalPrice: {
+          type: Number,
+          required: true,
+          default: 0,
+          validate: {
+            validator: function (v) {
+              return v > 0;
+            },
+            message: "{VALUE} must be a positive number",
+          },
+        },
+      },
+    ],
 
     returnMaxTime: {
       type: Date,
-
-      default: Date.now() + 1000000,
-
-      default: null,
-
+      default: Date.now() + 10000000,
     },
 
     EditMaxTime: {
@@ -98,8 +136,6 @@ const OrdseSchema = new mongoose.Schema(
       default: null,
 
       default: Date.now() + 100000,
-
-
     },
 
     deliveryPhoneNumber: {
@@ -127,7 +163,6 @@ const OrdseSchema = new mongoose.Schema(
       // unique: true,
     },
     returnreason: {
-
       type: String,
       default: null,
     },
@@ -138,4 +173,3 @@ const OrdseSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Order", OrdseSchema);
-
