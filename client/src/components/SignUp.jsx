@@ -227,7 +227,7 @@ function SignUp() {
                 {errorMessage.confirmPassword}
               </Alert>
             )}
-            <button type="submit">Sign Up</button>
+            <button className="submit" type="submit">Sign Up</button>
           </form>
         </div>
         <Link to="/login" className="forget">

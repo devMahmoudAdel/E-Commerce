@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState ,useEffect} from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
 import product1Image from "../../assets/productsimages/product1.jpg";
 import product2Image from "../../assets/productsimages/product2.jpg";
@@ -5,87 +7,41 @@ import product3Image from "../../assets/productsimages/product3.jpg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import "./index.css";
-const wishlist = [
-  {
-    id: 1,
-    name: "Product 1",
-    brand: "Brand 1",
-    Categories: ["Category1", "Category2 ", "Category3 "],
-    description: "Product 1 description",
-    price: 100,
-    images: product1Image,
-    varaity1: "Varaity1 ",
-    varaity2: "Varaity2 ",
-    varaity3: "Varaity3 ",
-    countInInverntory: 20,
-    isInStock: true,
-    orderedManyTimes: 10,
-  },
-
-  {
-    id: 2,
-    name: "Product 2",
-    brand: "Brand 2",
-    Categories: ["Category1", "Category2 ", "Category3 "],
-    description: "Product 2 description",
-    price: 200,
-    images: product2Image,
-    varaity1: "Varaity1 ",
-    varaity2: "Varaity2 ",
-    varaity3: "Varaity3 ",
-    countInInverntory: 15,
-    isInStock: true,
-    orderedManyTimes: 5,
-  },
-
-  {
-    id: 3,
-    name: "Product 3",
-    brand: "Brand 3",
-    Categories: ["Category1", "Category2 ", "Category3 "],
-    description: "Product 3 description",
-    price: 210,
-    images: product3Image,
-    varaity1: "Varaity1 ",
-    varaity2: "Varaity2 ",
-    varaity3: "Varaity3 ",
-    countInInverntory: 15,
-    isInStock: true,
-    orderedManyTimes: 5,
-  },
-
-  {
-    id: 4,
-    name: "Product 3",
-    brand: "Brand 3",
-    Categories: ["Category1", "Category2 ", "Category3 "],
-    description: "Product 3 description",
-    price: 210,
-    images: product3Image,
-    varaity1: "Varaity1 ",
-    varaity2: "Varaity2 ",
-    varaity3: "Varaity3 ",
-    countInInverntory: 15,
-    isInStock: true,
-    orderedManyTimes: 5,
-  },
-  {
-    id: 5,
-    name: "Product 3",
-    brand: "Brand 3",
-    Categories: ["Category1", "Category2 ", "Category3 "],
-    description: "Product 3 description",
-    price: 210,
-    images: product3Image,
-    varaity1: "Varaity1 ",
-    varaity2: "Varaity2 ",
-    varaity3: "Varaity3 ",
-    countInInverntory: 15,
-    isInStock: true,
-    orderedManyTimes: 5,
-  },
-];
 function Wishlist() {
+  const [wishlist, setWishlist] = useState([]);
+  const [loading, setLoading] = useState(true);
+   useEffect(() => {
+     const fetchWishlist = async () => {
+       try {
+         const response = await axios.get("/user/getwishList");
+         setWishlist(response.data);
+         setLoading(false);
+       } catch (error) {
+         console.error("Error fetching wishlist:", error);
+         setLoading(false);
+       }
+     };
+
+     fetchWishlist();
+   }, []);
+    const deleteWishlistItem = async (id) => {
+      try {
+        await axios.delete(`https://your-api-endpoint.com/wishlist/${id}`);
+        setWishlist(wishlist.filter((item) => item.id !== id));
+      } catch (error) {
+        console.error("Error deleting wishlist item:", error);
+      }
+    };
+    const moveAllToCart = async () => {
+      try {
+      await axios.post("https://your-api-endpoint.com/cart/move-all", {
+      items: wishlist,
+      });
+      setWishlist([]);
+      } catch (error) {
+        console.error("Error moving items to cart:", error);
+      }
+    };
   return (
     <Container
       sx={{

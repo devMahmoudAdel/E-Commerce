@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 //import components
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -28,6 +28,17 @@ import Profile from "./components/profile/Profile";
 
 function App() {
   axios.defaults.baseURL = "https://e-commerce-server-peach.vercel.app/";
+  import DashboardLayoutBasic from "./components/DrawerPage/Drawer";
+// import Cookies from "js-cookie";
+const [token , setToken] =  useState(null)
+
+useEffect(() => {
+
+},[]);
+
+function App() {
+
+
   axios.defaults.withCredentials = true;
 
   return (
@@ -47,6 +58,7 @@ function App() {
             </>
           }
         />
+        <Route path="drawer" element={<DashboardLayoutBasic/>} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
         <Route path="profile" element={<Profile />} />

@@ -1,10 +1,11 @@
 import MailIcon from "../assets/Images/icons-mail.png"
 import PhoneIcon from "../assets/Images/icons-phone.png"
+import UrlPath from "./UrlPath";
 import "./contact.css";
 function Contact() {
   return (
     <div className="contact">
-      <p className="link-url">Home / <span>Contact</span></p>
+      <UrlPath prev="Home" current="Contact"/>
       <div className="contact-container">
         <div className="info">
           <div>
