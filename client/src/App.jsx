@@ -23,12 +23,27 @@ import Profile from "./components/profile/Profile";
 import EditProfile from "./components/profile/EditProfile";
 import axios from "axios";
 import DashboardLayoutBasic from "./components/DrawerPage/Drawer";
+import Cookies from "js-cookie"; 
 // import Cookies from "js-cookie";
 function App() {
- const [token , setToken] =  useState(null)
-  useEffect(() => {
+ const [user , setUser] =  useState(null);
+  useEffect(()=>{
+    const token = Cookies.get("jwt"); 
+  // setToken(localStorage.getItem("jwt"));
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      async function fetchData() {
+        const response = await axios.get("/user/getMe").then((d) => {
+          console.log(d.data);
+          setUser(d.data);
+        });
+      }
+      fetchData();
+      } else {
+    delete axios.defaults.headers.common["Authorization"];
+  }}, []);
 
-  },[]);
+
 
   axios.defaults.baseURL = "http://localhost:3001";
   axios.defaults.withCredentials = true;
