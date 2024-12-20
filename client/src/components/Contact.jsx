@@ -1,10 +1,11 @@
 import MailIcon from "../assets/Images/icons-mail.png"
 import PhoneIcon from "../assets/Images/icons-phone.png"
+import UrlPath from "./UrlPath";
 import "./contact.css";
 function Contact() {
   return (
     <div className="contact">
-      <p className="link-url">Home / <span>Contact</span></p>
+      <UrlPath prev="Home" current="Contact"/>
       <div className="contact-container">
         <div className="info">
           <div>
@@ -32,7 +33,8 @@ function Contact() {
             <input type="email" placeholder="Your Email" />
             <input type="email" placeholder="Your Phone" />
             </div>
-            <input type="text" placeholder="Your Message" />
+            <textarea className="message" placeholder="Your Message"></textarea>
+            {/* <input className="message" type="text" placeholder="Your Message" /> */}
             <button type="submit">Send Message</button>
           </form>
         </div>
