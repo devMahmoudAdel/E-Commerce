@@ -20,30 +20,37 @@ import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
 import axios from "axios";
-import Admin from "./components/Admin/Admin";
-//adminn imports
 import AdminApp from "./components/adminn/AdminApp";
 import EditProfile from "./components/profile/EditProfile";
 import Profile from "./components/profile/Profile";
+import Cookies from "js-cookie";
+import Admin from "./components/Admin/Admin";
+//adminn imports
 
 function App() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const token = Cookies.get("jwt");
+    // setToken(localStorage.getItem("jwt"));
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      async function fetchData() {
+        const response = await axios.get("/user/getMe").then((d) => {
+          console.log(d.data);
+          setUser(d.data);
+        });
+      }
+      fetchData();
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+    }
+  }, []);
+
   axios.defaults.baseURL = "https://e-commerce-server-peach.vercel.app/";
-  import DashboardLayoutBasic from "./components/DrawerPage/Drawer";
-// import Cookies from "js-cookie";
-const [token , setToken] =  useState(null)
-
-useEffect(() => {
-
-},[]);
-
-function App() {
-
 
   axios.defaults.withCredentials = true;
 
   return (
-    // <<<<<<< Updated upstream
-
     <BrowserRouter>
       <Header />
       <Navbar />
@@ -58,7 +65,7 @@ function App() {
             </>
           }
         />
-        <Route path="drawer" element={<DashboardLayoutBasic/>} />
+        <Route path="drawer" element={<DashboardLayoutBasic />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
         <Route path="profile" element={<Profile />} />
