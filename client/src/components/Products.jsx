@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Heart, Eye } from 'lucide-react'; // Import icons from lucide-react
-import './Products.css'; // Import the new CSS file
+import { Heart, Eye } from 'lucide-react'; 
+import './Products.css'; 
 
 import product1Image from '../assets/productsimages/product1.jpg';
 import product2Image from '../assets/productsimages/product2.jpg';
