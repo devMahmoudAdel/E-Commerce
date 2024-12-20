@@ -1,7 +1,6 @@
 import React from 'react';
-import { Store, DollarSign, Users, Wallet, Twitter, Instagram, Linkedin,
-   Truck, Headphones, Shield } from 'lucide-react'; // Import icons from lucide-react
-import './About.css';
+import { Store, DollarSign, Users, Wallet, Twitter, Instagram, Linkedin, Truck, Headphones, Shield } from 'lucide-react';
+import './About.css'; 
 import product1Image from '../assets/productsimages/product1.jpg';
 import product2Image from '../assets/productsimages/product2.jpg';
 import product3Image from '../assets/productsimages/product3.jpg';
