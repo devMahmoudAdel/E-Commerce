@@ -16,28 +16,41 @@ function Navbar() {
         <li><Link to="signup">Sign Up</Link></li>
         <li><Link to="admin">Admin</Link></li>
       </ul>
+
       </div>
       <div className="search">
-        <input type="search" placeholder="Search"/>
-        <img src={SearchIcon} alt="search" />
+        <input type="search" placeholder="Search" />
+        <img className="icon" src={SearchIcon} alt="search" />
       </div>
       <div className="icons">
-        <div><img src={WishListIcon} alt="Wishlist" /></div>
-        <div><img src={CartIcon} alt="Cart" /></div>
+        <div>
+          <img className="icon" src={WishListIcon} alt="Wishlist" />
+        </div>
+        <div>
+          <img className="icon" src={CartIcon} alt="Cart" />
+        </div>
       </div>
       <div className="links">
         <span className="icon">
-            <span></span>
-            <span></span>
-            <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </span>
         <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/contact">contact</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/contact">contact</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
         </ul>
-    </div>
+      </div>
     </div>
   );
 }
