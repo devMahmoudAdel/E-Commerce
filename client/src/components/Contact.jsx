@@ -32,7 +32,8 @@ function Contact() {
             <input type="email" placeholder="Your Email" />
             <input type="email" placeholder="Your Phone" />
             </div>
-            <input type="text" placeholder="Your Message" />
+            <textarea className="message" placeholder="Your Message"></textarea>
+            {/* <input className="message" type="text" placeholder="Your Message" /> */}
             <button type="submit">Send Message</button>
           </form>
         </div>

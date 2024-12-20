@@ -19,7 +19,13 @@ import ProducDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
+import Profile from "./components/profile/Profile";
+import EditProfile from "./components/profile/EditProfile";
+import axios from "axios";
+use
 function App() {
+  axios.defaults.baseURL = "http://localhost:3001";
+  axios.defaults.withCredentials = true;
   return (
 // <<<<<<< Updated upstream
     <BrowserRouter>
@@ -36,6 +42,8 @@ function App() {
         />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="editprofile" element={<EditProfile />} />
         <Route path="resetpassword" element={<ResetPassword />} />
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="contact" element={<Contact />} />
