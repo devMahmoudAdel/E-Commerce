@@ -1,145 +1,144 @@
-/* General container styling */
 .product-detail-container {
+  padding: 40px;
   max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  font-family: "Arial", sans-serif;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
 }
 
-/* Loading text */
-.product-detail-container h1 {
-  text-align: center;
-  color: #555;
-  font-size: 24px;
-}
-
-/* Image gallery styling */
-.image-gallery {
+.product-detail-layout {
   display: flex;
+  gap: 20px;
+}
+
+.image-gallery {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.thumbnail-list {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
-  justify-content: center;
 }
 
-.image-gallery img {
-  max-width: 100%;
-  height: auto;
+.thumbnail {
+  width: 80px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease;
 }
 
-.image-gallery img:hover {
-  transform: scale(1.05);
+.thumbnail:hover {
+  transform: scale(1.1);
 }
 
-/* Main section */
-.main-section {
-  text-align: center;
-  padding: 20px;
-  background-color: #fff;
+.main-image img {
+  width: 100%;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Product title */
+.product-info {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .product-title {
-  font-size: 28px;
-  color: #333;
+  font-size: 2rem;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* Product brand and price */
-.product-brand,
+.product-reviews {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.stars {
+  color: #ffcc00;
+}
+
+.stock-status {
+  font-size: 1rem;
+  color: green;
+  margin-left: 10px;
+}
+
 .product-price {
-  font-size: 18px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+.product-description {
+  font-size: 1rem;
   color: #666;
-  margin: 5px 0;
+  margin-bottom: 20px;
 }
 
-/* Variations */
-.variations {
-  margin: 15px 0;
-  font-size: 16px;
-  color: #444;
+.product-options {
+  margin-bottom: 20px;
 }
 
-/* Quantity input */
-.quantity {
-  margin: 20px 0;
+
+.product-sizes {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.purchase-section {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-top: 15px;
 }
 
-.quantity label {
-  font-size: 16px;
-  color: #444;
-}
-
-.quantity input {
-  width: 60px;
-  padding: 5px;
-  font-size: 16px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-}
-
-.quantity input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-}
-
-/* Buy button */
-.buy-button {
+.buy-button,
+.wishlist-button {
   padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
+  font-size: 1rem;
+  color: white;
   background-color: #007bff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .buy-button:hover {
   background-color: #0056b3;
-  transform: scale(1.05);
 }
 
-.buy-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.wishlist-button {
+  background-color: #ff6666;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .image-gallery {
-    flex-direction: column;
-  }
+.wishlist-button:hover {
+  background-color: #cc3333;
+}
 
-  .main-section {
-    padding: 15px;
-  }
+.delivery-info {
+  margin-top: 20px;
+}
 
-  .product-title {
-    font-size: 24px;
-  }
+.info-item {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
 
-  .product-brand,
-  .product-price {
-    font-size: 16px;
-  }
-
-  .quantity input {
-    width: 50px;
-  }
+.info-item span {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
 }
