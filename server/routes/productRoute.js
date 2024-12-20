@@ -36,15 +36,10 @@ router
     usercontroller.isAdminforInteriorUse,
     productcontroller.deleteProduct
   ); //AHMED
-router
-  .route("/get/:id")
-  .get(usercontroller.protect, productcontroller.getproduct); //OMAR
-router
-  .route("/getAll")
-  .get(usercontroller.protect, productcontroller.getAllproduct); //AHMED
-router
-  .route("/getByCategory/:category")
-  .get(usercontroller.protect, productcontroller.getByCategory); //NOOR
+router.route("/get/:id").get(productcontroller.getproduct); //OMAR
+router.route("/getAll").get(productcontroller.getAllproduct); //AHMED
+
+router.route("/getByCategory/:category").get(productcontroller.getByCategory); //NOOR
 router
   .route("/editInverntoryStock/:id")
   .patch(
@@ -52,4 +47,18 @@ router
     usercontroller.isAdminforInteriorUse,
     productcontroller.editInverntoryStock
   ); //NOOR
+
+router
+  .route("/setReview/:id")
+  .patch(usercontroller.protect, productcontroller.setReview); //
+
+router
+  .route("/editReview/:id")
+  .patch(usercontroller.protect, productcontroller.editReview); //
 module.exports = router;
+
+router
+  .route("/deleteReview/:id")
+  .patch(usercontroller.protect, productcontroller.deleteReview);
+
+router.route("/getTopRatedProducts").get(productcontroller.getTopRatedProducts);

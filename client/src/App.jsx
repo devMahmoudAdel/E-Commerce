@@ -15,24 +15,31 @@ import LogIn from "./components/LogIn";
 import Wishlist from "./components/wishList/Wishlist";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import ProducDetails from "./components/ProductDetails";
+import ProducDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
-//admin imports old
+import axios from "axios";
 import Admin from "./components/Admin/Admin";
 //adminn imports 
 import AdminApp from './components/adminn/AdminApp';
 
-
 function App() {
+  axios.defaults.baseURL = "http://localhost:3001";
   return (
+
+    // <<<<<<< Updated upstream
+
     <BrowserRouter>
       <Header />
       <Navbar />
       <Routes>
-        <Route path="/" element={
-             <>
+
+        <Route
+          path="/"
+          element={
+            <>
+
               <Categories />
               <Products />
               <Featured />
@@ -47,13 +54,35 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<CheckOut />} />
-        <Route path="productdetails" element={<ProducDetails />} />
+        <Route path="productdetails/:id" element={<ProducDetails />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/admin/*" element={<AdminApp />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
+
+  // // =======
+  //         <BrowserRouter>
+  //         <Header/>
+  //         <Navbar/>
+  //         <Routes>
+  //           <Route path="/" element={<><Categories/><Products /><Featured/></>} />
+  //           <Route path="signup" element={<SignUp />} />
+  //           <Route path="login" element={<LogIn />} />
+  //           <Route path="resetpassword" element={<ResetPassword />} />
+  //           <Route path="wishlist" element={<Wishlist />} />
+  //           <Route path="contact" element={<Contact />} />
+  //           <Route path="about" element={<About />} />
+  //           <Route path="cart" element={<Cart />} />
+  //           <Route path="checkout" element={<CheckOut />}/>
+  //           <Route path="productdetails" element={<ProducDetails />} />
+  //           <Route path="*" element={<Error404 />} />
+  //         </Routes>
+  //         <Footer/>
+  //         </BrowserRouter>
+
+
 }
 
 export default App;

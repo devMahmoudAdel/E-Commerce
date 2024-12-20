@@ -132,6 +132,7 @@ function Wishlist() {
         {wishlist.map((product) => (
           <Box
             sx={{
+              width: "100%",
               margin: "0 auto",
               maxWidth: "250px",
               display: "flex",
@@ -144,7 +145,7 @@ function Wishlist() {
               sx={{
                 position: "relative",
                 height: "270px",
-    
+
                 width: "100%",
                 overflow: "hidden",
               }}
@@ -169,6 +170,7 @@ function Wishlist() {
                   style={{
                     padding: "2px 2px",
                     width: "100%",
+                    height: "auto",
                   }}
                   loading="lazy"
                   src={product.images}
