@@ -86,6 +86,34 @@ const BroductSchema = new mongoose.Schema(
       ref: "Admin",
       required: true,
     },
+    reviews: [
+      {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+        rating: {
+          type: Number,
+          min: 1,
+          max: 5,
+        },
+        comment: {
+          type: String,
+          minlength: 10,
+          maxlength: 1000,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now(),
+        },
+      },
+    ],
+    avgRating: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 5,
+    },
   },
   {
     timestamps: true,

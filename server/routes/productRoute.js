@@ -51,4 +51,18 @@ router
     usercontroller.isAdminforInteriorUse,
     productcontroller.editInverntoryStock
   ); //NOOR
+
+router
+  .route("/setReview/:id")
+  .patch(usercontroller.protect, productcontroller.setReview); //
+
+router
+  .route("/editReview/:id")
+  .patch(usercontroller.protect, productcontroller.editReview); //
 module.exports = router;
+
+router
+  .route("/deleteReview/:id")
+  .patch(usercontroller.protect, productcontroller.deleteReview);
+
+router.route("/getTopRatedProducts").get(productcontroller.getTopRatedProducts);
