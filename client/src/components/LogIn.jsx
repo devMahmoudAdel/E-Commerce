@@ -3,7 +3,7 @@ import "./signup.css";
 import "./login.css";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios"; 
+import axios from "axios";
 function LogIn() {
   // State for form inputs
   const [formData, setFormData] = useState({
@@ -29,10 +29,10 @@ function LogIn() {
     try {
       // Replace with your login API endpoint
       const response = await axios.post(
-        "/user/register",
+        "/user/login",
         {
-          "email": formData.email,
-          "password": formData.password,
+          email: formData.email,
+          password: formData.password,
         },
         {
           headers: {
@@ -40,25 +40,28 @@ function LogIn() {
           },
         }
       );
-      
+
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Login failed!",
-        }));
+        throw new Error(
+          errorData.message ||
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Login failed!",
+            })
+        );
       }
 
       const data = await response.json();
 
-Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Login successful",
-  showConfirmButton: false,
-  timer: 1500
-});
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       console.log("Response Data:", data);
 
       // Perform further actions, e.g., saving a token or redirecting
@@ -101,15 +104,17 @@ Swal.fire({
           </div>
         </form>
       </div>
-      {errorMessage &&
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: {errorMessage},
-          customClass: {
-            confirmButton: 'error-button' // Add a custom class for the confirm button
-          }
-          })}
+      {errorMessage && (
+        // Swal.fire({
+        //   icon: "error",
+        //   title: "Oops...",
+        //   text: { errorMessage },
+        //   customClass: {
+        //     confirmButton: "error-button", // Add a custom class for the confirm button
+        //   },
+        // })
+        <></>
+      )}
       <Link to="/signup" className="forget">
         Don't have an account? <span>Sign Up</span>
       </Link>

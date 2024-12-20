@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 //import components
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -27,7 +27,7 @@ import EditProfile from "./components/profile/EditProfile";
 import Profile from "./components/profile/Profile";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3001";
+  axios.defaults.baseURL = "https://e-commerce-server-peach.vercel.app/";
   axios.defaults.withCredentials = true;
 
   return (
