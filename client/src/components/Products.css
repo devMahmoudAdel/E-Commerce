@@ -1,11 +1,13 @@
 .products-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
+
 }
 
 .products-header {
   margin-bottom: 32px;
+  text-align: center; /* Center align the header */
 }
 
 .products-label {
@@ -26,7 +28,7 @@
 }
 
 .product-card {
-  background-color: #f9fafb;
+  background-color: #ffffff; /* Ensure individual cards have a white background */
   border-radius: 8px;
   padding: 16px;
   position: relative;
@@ -114,7 +116,7 @@
 }
 
 .product-price {
-  color: #ef4444 !important; /* Ensure the color is applied */
+  color: #ff0000 !important; /* Ensure the color is applied */
   font-weight: 500;
   font-size: 0.9em; 
 }
