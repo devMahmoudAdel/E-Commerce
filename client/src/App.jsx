@@ -21,25 +21,26 @@ import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
 import axios from "axios";
 import Admin from "./components/Admin/Admin";
-//adminn imports 
-import AdminApp from './components/adminn/AdminApp';
+//adminn imports
+import AdminApp from "./components/adminn/AdminApp";
+import EditProfile from "./components/profile/EditProfile";
+import Profile from "./components/profile/Profile";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3001";
-  return (
+  axios.defaults.withCredentials = true;
 
+  return (
     // <<<<<<< Updated upstream
 
     <BrowserRouter>
       <Header />
       <Navbar />
       <Routes>
-
         <Route
           path="/"
           element={
             <>
-
               <Categories />
               <Products />
               <Featured />
@@ -48,6 +49,8 @@ function App() {
         />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="editprofile" element={<EditProfile />} />
         <Route path="resetpassword" element={<ResetPassword />} />
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="contact" element={<Contact />} />
@@ -81,8 +84,6 @@ function App() {
   //         </Routes>
   //         <Footer/>
   //         </BrowserRouter>
-
-
 }
 
 export default App;
