@@ -1,4 +1,5 @@
 .container {
+  margin: 50px auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -30,7 +31,7 @@
   color: black;
   margin: 10px 0;
 }
-.parag {
+p {
   display: block;
   max-width: 300px;
   margin: 0 auto 10px;
@@ -44,7 +45,8 @@ form {
   align-items: center;
   gap: 10px;
 }
-.inpt {
+input {
+
   width: 300px;
   height: 30px;
   /* border-radius: 6px; */
@@ -57,15 +59,15 @@ form {
   outline: none;
   background-color: white;
 }
-.inpt::placeholder {
+input::placeholder{
   color: #333;
   font-size: 10x;
 }
-.inpt:focus {
+input:focus {
   border: 2px solid black;
   border-radius: 6px;
 }
-.butt {
+button.submit {
   width: 90%;
   background-color: #be0d0d;
   color: white;
@@ -78,14 +80,14 @@ form {
   transition: 0.2s;
 }
 .forget {
-  margin: 10px 0;
+  margin:10px 0;
   color: black;
   font-size: 15px;
   text-align: center;
   text-decoration: none;
   transition: 0.3s;
 }
-.forget:hover {
+.forget:hover{
   font-weight: bold;
 }
 .forget span {
@@ -93,7 +95,7 @@ form {
   font-size: 15px;
 }
 @media (max-width: 767px) {
-  .side-img {
+  .side-img{
     display: none;
   }
   .sign-form {
@@ -101,7 +103,7 @@ form {
     justify-content: center;
   }
 }
-.butt:hover {
+button:hover {
   background-color: #ca0000d2;
 }
 
@@ -119,6 +121,6 @@ form {
   color: #be0d0d;
   /* font-weight: bold; */
 }
-.log-forgot a:hover {
-  font-weight: bold;
+.log-forgot a:hover{
+  font-weight: bold; 
 }

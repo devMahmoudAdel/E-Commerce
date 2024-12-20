@@ -106,6 +106,22 @@ hr {
   flex-grow: 1;
   margin: 5px 10px;
 }
+.contact-form .message {
+  width: 100%;
+  min-height: 80px;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+}
+.contact-form .message:focus {
+  border: 2px solid #333;
+  outline: none;
+}
   /* margin: 25px; */
   .contact-form button {
     width: 30%;
