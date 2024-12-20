@@ -4,7 +4,7 @@
   /* background-color: #f5f5f5; */
   /* height: 80vh; */
   /* overflow: hidden; */
-  max-width: 70%;
+  max-width: 80%;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -106,7 +106,6 @@
     font-size: 1.5em;
     margin: 10px 0;
     color: #333;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: left;
 }
 
@@ -114,7 +113,6 @@
   font-size: 1em;
   color: #777;
   margin-bottom: 10px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-align: left;
   width: 100%;
 }
@@ -123,7 +121,6 @@
   font-weight: bold;
   color: #333;
   font-size: 1.2em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-align: left;
   width: 100%;
 }
@@ -183,5 +180,29 @@
   .services {
     grid-template-columns: 1fr;
     gap: 20px; /* Adjusted gap */
+  }
+
+  .products-wrapper {
+    flex-direction: column; /* Stack columns vertically */
+  }
+
+  .left-column, .right-column {
+    flex: 1 1 100%; /* Make columns full width */
+  }
+
+  .name {
+    font-size: 1.2em; /* Adjust font size for smaller screens */
+  }
+
+  .description {
+    font-size: 0.9em; /* Adjust font size for smaller screens */
+  }
+
+  .price {
+    font-size: 1em; /* Adjust font size for smaller screens */
+  }
+
+  .image {
+    height: auto; /* Allow image height to adjust */
   }
 }
