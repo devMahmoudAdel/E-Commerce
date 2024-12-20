@@ -19,14 +19,18 @@ import ProducDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
+import axios from "axios";
 function App() {
+  axios.defaults.baseURL = "http://localhost:3001";
   return (
-// <<<<<<< Updated upstream
+    // <<<<<<< Updated upstream
     <BrowserRouter>
       <Header />
       <Navbar />
       <Routes>
-        <Route path="/" element={
+        <Route
+          path="/"
+          element={
             <>
               <Categories />
               <Products />
@@ -42,33 +46,33 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<CheckOut />} />
-        <Route path="productdetails" element={<ProducDetails />} />
+        <Route path="productdetails/:id" element={<ProducDetails />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
-// // =======
-//         <BrowserRouter>
-//         <Header/>
-//         <Navbar/>
-//         <Routes>
-//           <Route path="/" element={<><Categories/><Products /><Featured/></>} />
-//           <Route path="signup" element={<SignUp />} />
-//           <Route path="login" element={<LogIn />} />
-//           <Route path="resetpassword" element={<ResetPassword />} />
-//           <Route path="wishlist" element={<Wishlist />} />
-//           <Route path="contact" element={<Contact />} />
-//           <Route path="about" element={<About />} />
-//           <Route path="cart" element={<Cart />} />
-//           <Route path="checkout" element={<CheckOut />}/>
-//           <Route path="productdetails" element={<ProducDetails />} />
-//           <Route path="*" element={<Error404 />} />
-//         </Routes>
-//         <Footer/>
-//         </BrowserRouter>
-      
-// // >>>>>>> Stashed changes
+  // // =======
+  //         <BrowserRouter>
+  //         <Header/>
+  //         <Navbar/>
+  //         <Routes>
+  //           <Route path="/" element={<><Categories/><Products /><Featured/></>} />
+  //           <Route path="signup" element={<SignUp />} />
+  //           <Route path="login" element={<LogIn />} />
+  //           <Route path="resetpassword" element={<ResetPassword />} />
+  //           <Route path="wishlist" element={<Wishlist />} />
+  //           <Route path="contact" element={<Contact />} />
+  //           <Route path="about" element={<About />} />
+  //           <Route path="cart" element={<Cart />} />
+  //           <Route path="checkout" element={<CheckOut />}/>
+  //           <Route path="productdetails" element={<ProducDetails />} />
+  //           <Route path="*" element={<Error404 />} />
+  //         </Routes>
+  //         <Footer/>
+  //         </BrowserRouter>
+
+  // // >>>>>>> Stashed changes
 }
 
 export default App;

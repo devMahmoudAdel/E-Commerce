@@ -36,14 +36,10 @@ router
     usercontroller.isAdminforInteriorUse,
     productcontroller.deleteProduct
   ); //AHMED
-router
-  .route("/get/:id")
-  .get(usercontroller.protect, productcontroller.getproduct); //OMAR
+router.route("/get/:id").get(productcontroller.getproduct); //OMAR
 router.route("/getAll").get(productcontroller.getAllproduct); //AHMED
 
-router
-  .route("/getByCategory/:category")
-  .get(usercontroller.protect, productcontroller.getByCategory); //NOOR
+router.route("/getByCategory/:category").get(productcontroller.getByCategory); //NOOR
 router
   .route("/editInverntoryStock/:id")
   .patch(
