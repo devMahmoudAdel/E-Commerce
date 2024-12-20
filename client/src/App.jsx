@@ -28,8 +28,6 @@ function App() {
   axios.defaults.baseURL = "http://localhost:3001";
   return (
 
-    // <<<<<<< Updated upstream
-
     <BrowserRouter>
       <Header />
       <Navbar />
@@ -61,27 +59,6 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
-
-  // // =======
-  //         <BrowserRouter>
-  //         <Header/>
-  //         <Navbar/>
-  //         <Routes>
-  //           <Route path="/" element={<><Categories/><Products /><Featured/></>} />
-  //           <Route path="signup" element={<SignUp />} />
-  //           <Route path="login" element={<LogIn />} />
-  //           <Route path="resetpassword" element={<ResetPassword />} />
-  //           <Route path="wishlist" element={<Wishlist />} />
-  //           <Route path="contact" element={<Contact />} />
-  //           <Route path="about" element={<About />} />
-  //           <Route path="cart" element={<Cart />} />
-  //           <Route path="checkout" element={<CheckOut />}/>
-  //           <Route path="productdetails" element={<ProducDetails />} />
-  //           <Route path="*" element={<Error404 />} />
-  //         </Routes>
-  //         <Footer/>
-  //         </BrowserRouter>
-
 
 }
 

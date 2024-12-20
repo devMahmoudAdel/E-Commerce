@@ -1,322 +1,339 @@
 import React, { useState } from 'react';
+import { Heart, Eye } from 'lucide-react'; // Import icons from lucide-react
+import './Products.css'; // Import the new CSS file
+
 import product1Image from '../assets/productsimages/product1.jpg';
 import product2Image from '../assets/productsimages/product2.jpg';
 import product3Image from '../assets/productsimages/product3.jpg';
 
-const StarIcon = () => <span>★</span>;
+const Products = () => {
+  const [showAll, setShowAll] = useState(false);
 
-function Products() {
-  const [visibleProducts, setVisibleProducts] = useState(6);
-  
-  const productsData = [
+  const products = [
     {
       id: 1,
-      name: "Product 1",
-      price: 29.99,
-      discountedPrice: 24.99,
-      description: "Description for product 1",
+      name: 'Breed Dry Dog Food',
+      price: 100,
+      rating: 3.5,
+      reviews: 35,
       image: product1Image,
-      rating: 4,
-      reviews: 123
+      isNew: false
     },
-    // ...copy the structure for other products, using your existing IDs and images
-  {
-    id: 2,
-    name: "Product 2",
-    price: 39.99,
-    discountedPrice: 34.99,
-    description: "Description for product 2",
-    image: product2Image,
-    rating: 5,
-    reviews: 98
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    price: 49.99,
-    discountedPrice: 44.99,
-    description: "Description for product 3",
-    image: product3Image,
-    rating: 3,
-    reviews: 76
-  },
-  {
-    id: 4,
-    name: "Product 4",
-    price: 29.99,
-    discountedPrice: 24.99,
-    description: "Description for product 4",
-    image: product1Image,
-    rating: 4,
-    reviews: 123
-  },
-  {
-    id: 5,
-    name: "Product 5",
-    price: 39.99,
-    discountedPrice: 34.99,
-    description: "Description for product 5",
-    image: product2Image,
-    rating: 5,
-    reviews: 98
-  },
-  {
-    id: 6,
-    name: "Product 6",
-    price: 49.99,
-    discountedPrice: 44.99,
-    description: "Description for product 6",
-    image: product3Image,
-    rating: 3,
-    reviews: 76
-  },
-  {
-    id: 7,
-    name: "Product 7",
-    price: 29.99,
-    discountedPrice: 24.99,
-    description: "Description for product 7",
-    image: product1Image,
-    rating: 4,
-    reviews: 123
-  },
-  {
-    id: 8,
-    name: "Product 8",
-    price: 39.99,
-    discountedPrice: 34.99,
-    description: "Description for product 8",
-    image: product2Image,
-    rating: 5,
-    reviews: 98
-  },
-  {
-    id: 9,
-    name: "Product 9",
-    price: 49.99,
-    discountedPrice: 44.99,
-    description: "Description for product 9",
-    image: product3Image,
-    rating: 3,
-    reviews: 76
-  },
-  {
-    id: 10,
-    name: "Product 10",
-    price: 29.99,
-    discountedPrice: 24.99,
-    description: "Description for product 10",
-    image: product1Image,
-    rating: 4,
-    reviews: 123
-  },
-  {
-    id: 11,
-    name: "Product 11",
-    price: 39.99,
-    discountedPrice: 34.99,
-    description: "Description for product 11",
-    image: product2Image,
-    rating: 5,
-    reviews: 98
-  },
-  {
-    id: 12,
-    name: "Product 12",
-    price: 49.99,
-    discountedPrice: 44.99,
-    description: "Description for product 12",
-    image: product3Image,
-    rating: 3,
-    reviews: 76
-  },
-  {
-    id: 13,
-    name: "Product 13",
-    price: 29.99,
-    discountedPrice: 24.99,
-    description: "Description for product 13",
-    image: product1Image,
-    rating: 4,
-    reviews: 123
-  },
-  {
-    id: 14,
-    name: "Product 14",
-    price: 39.99,
-    discountedPrice: 34.99,
-    description: "Description for product 14",
-    image: product2Image,
-    rating: 5,
-    reviews: 98
-  },
-  {
-    id: 15,
-    name: "Product 15",
-    price: 49.99,
-    discountedPrice: 44.99,
-    description: "Description for product 15",
-    image: product3Image,
-    rating: 3,
-    reviews: 76
-  },
-  {
-    id: 16,
-    name: "Product 16",
-    price: 29.99,
-    discountedPrice: 24.99,
-    description: "Description for product 16",
-    image: product1Image,
-    rating: 4,
-    reviews: 123
-  }
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },{
+      id: 1,
+      name: 'Breed Dry Dog Food',
+      price: 100,
+      rating: 3.5,
+      reviews: 35,
+      image: product1Image,
+      isNew: false
+    },
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },{
+      id: 1,
+      name: 'Breed Dry Dog Food',
+      price: 100,
+      rating: 3.5,
+      reviews: 35,
+      image: product1Image,
+      isNew: false
+    },
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },{
+      id: 1,
+      name: 'Breed Dry Dog Food',
+      price: 100,
+      rating: 3.5,
+      reviews: 35,
+      image: product1Image,
+      isNew: false
+    },
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },
+    {
+      id: 2,
+      name: 'CANON EOS DSLR Camera',
+      price: 360,
+      rating: 4,
+      reviews: 95,
+      image: product2Image,
+      isNew: false
+    },
+    {
+      id: 3,
+      name: 'ASUS FHD Gaming Laptop',
+      price: 700,
+      rating: 4.5,
+      reviews: 325,
+      image: product3Image,
+      isNew: false
+    },
+    {
+      id: 4,
+      name: 'Kids Electric Car',
+      price: 960,
+      rating: 5,
+      reviews: 65,
+      image: product1Image,
+      isNew: true
+    },
+    // Add more products as needed
   ];
 
-  const loadMore = () => {
-    setVisibleProducts(prev => Math.min(prev + 3, productsData.length));
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span
+          key={i}
+          className={`star ${i <= rating ? 'filled' : ''}`}
+        >
+          ★
+        </span>
+      );
+    }
+    return stars;
   };
 
-  const styles = {
-    container: {
-      padding: '20px',
-      fontFamily: 'Arial, sans-serif',
-      backgroundColor: '#f5f5f5',
-      maxWidth: '1200px',
-      margin: '0 auto'
-    },
-    header: {
-      textAlign: 'center',
-      marginBottom: '20px',
-      fontSize: '2.5em',
-      color: '#333',
-      textTransform: 'uppercase',
-      letterSpacing: '2px'
-    },
-    productsWrapper: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-      gap: '20px',
-      padding: '20px'
-    },
-    card: {
-      position: 'relative',
-      border: '1px solid #ddd',
-      borderRadius: '10px',
-      padding: '20px',
-      backgroundColor: '#fff',
-      overflow: 'hidden',
-      transition: 'transform 0.3s ease',
-      cursor: 'pointer'
-    },
-    imageContainer: {
-      position: 'relative',
-      overflow: 'hidden',
-      borderRadius: '8px',
-      marginBottom: '15px'
-    },
-    image: {
-      width: '100%',
-      height: '200px',
-      objectFit: 'cover'
-    },
-    addToCartButton: {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-      color: 'white',
-      padding: '10px 20px',
-      borderRadius: '5px',
-      opacity: 0,
-      transition: 'opacity 0.3s ease',
-      border: 'none',
-      cursor: 'pointer'
-    },
-    priceContainer: {
-      display: 'flex',
-      gap: '10px',
-      alignItems: 'center'
-    },
-    price: {
-      color: '#333',
-      fontSize: '1.1em',
-      fontWeight: 'bold'
-    },
-    discountedPrice: {
-      color: 'red',
-      fontSize: '1.1em',
-      fontWeight: 'bold'
-    },
-    originalPrice: {
-      textDecoration: 'line-through',
-      color: '#999',
-      fontSize: '0.9em'
-    },
-    ratingContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '5px',
-      marginTop: '10px'
-    },
-    loadMoreButton: {
-      display: 'block',
-      margin: '20px auto',
-      padding: '10px 20px',
-      backgroundColor: '#333',
-      color: 'white',
-      border: 'none',
-      borderRadius: '5px',
-      cursor: 'pointer'
-    }
+  const handleViewAll = () => {
+    setShowAll(true);
   };
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.header}>Our Products</h1>
-      <div style={styles.productsWrapper}>
-        {productsData.slice(0, visibleProducts).map(product => (
-          <div key={product.id} style={styles.card}
-               onMouseOver={e => {
-                 e.currentTarget.querySelector('.addToCart').style.opacity = '1';
-               }}
-               onMouseOut={e => {
-                 e.currentTarget.querySelector('.addToCart').style.opacity = '0';
-               }}>
-            <div style={styles.imageContainer}>
-              <img src={product.image} alt={product.name} style={styles.image} />
-              <button className="addToCart" style={styles.addToCartButton}>
-                Add to Cart
-              </button>
+    <div className="products-container">
+      <div className="products-header">
+        <span className="products-label">Our Products</span>
+        <h1 className="products-title">Explore Our Products</h1>
+      </div>
+
+      <div className="products-grid">
+        {products.slice(0, showAll ? products.length : 10).map((product) => (
+          <div key={product.id} className="product-card">
+            <div className="product-image-container">
+              {product.isNew && <span className="new-badge">NEW</span>}
+              <img
+                src={product.image}
+                alt={product.name}
+                className="product-image"
+              />
+              <div className="product-overlay">
+                <button className="icon-button heart-button">
+                  <Heart size={20} />
+                </button>
+                <button className="icon-button eye-button">
+                  <Eye size={20} />
+                </button>
+              </div>
+              <button className="add-to-cart-button">Add To Cart</button>
             </div>
-            <h2 style={styles.name}>{product.name}</h2>
-            <p style={styles.description}>{product.description}</p>
-            <div style={styles.priceContainer}>
-              <span style={styles.discountedPrice}>${product.discountedPrice}</span>
-              <span style={styles.originalPrice}>${product.price}</span>
-            </div>
-            <div style={styles.ratingContainer}>
-              {[...Array(5)].map((_, index) => (
-                <StarIcon key={index} style={{
-                  color: index < product.rating ? '#ffd700' : '#ddd'
-                }} />
-              ))}
-              <span>({product.reviews})</span>
+
+            <div className="product-info">
+              <h3 className="product-name">{product.name}</h3>
+              <div className="product-meta">
+                <span className="product-price">${product.price}</span>
+                <div className="product-rating">
+                  {renderStars(product.rating)}
+                  <span className="review-count">({product.reviews})</span>
+                </div>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      {visibleProducts < productsData.length && (
-        <button onClick={loadMore} style={styles.loadMoreButton}>
-          Load More Products
-        </button>
+
+      {!showAll && (
+        <div className="view-all-container">
+          <button className="view-all-button" onClick={handleViewAll}>
+            View All Products
+          </button>
+        </div>
       )}
     </div>
   );
-}
+};
 
 export default Products;
-
-
 
 
