@@ -92,7 +92,7 @@ Swal.fire({
             required
           />
           <div className="log-forgot">
-            <button type="submit" disabled={isLoading}>
+            <button className="submit" type="submit" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Log In"}
             </button>
             <Link to="/resetpassword" className="forget">

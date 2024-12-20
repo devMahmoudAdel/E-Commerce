@@ -22,22 +22,25 @@ import ResetPassword from "./components/ResetPassword";
 import Profile from "./components/profile/Profile";
 import EditProfile from "./components/profile/EditProfile";
 import axios from "axios";
-import Cookies from "js-cookie"
+import DashboardLayoutBasic from "./components/DrawerPage/Drawer";
+// import Cookies from "js-cookie";
 function App() {
  const [token , setToken] =  useState(null)
   useEffect(() => {
-    
+
   },[]);
 
   axios.defaults.baseURL = "http://localhost:3001";
   axios.defaults.withCredentials = true;
   return (
-// <<<<<<< Updated upstream
+    // <<<<<<< Updated upstream
     <BrowserRouter>
       <Header />
       <Navbar />
       <Routes>
-        <Route path="/" element={
+        <Route
+          path="/"
+          element={
             <>
               <Categories />
               <Products />
@@ -45,6 +48,7 @@ function App() {
             </>
           }
         />
+        <Route path="drawer" element={<DashboardLayoutBasic/>} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
         <Route path="profile" element={<Profile />} />
