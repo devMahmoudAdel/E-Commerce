@@ -10,7 +10,7 @@ const TopRatedProducts = () => {
    useEffect(() => {
         const fetchTopRatedProducts = async () => {
             try {
-                const response = await axios.get('/product/getTopRatedProducts'); 
+                const response = await axios.get('https://e-commerce-server-peach.vercel.app/product/getTopRatedProducts'); 
                 setProducts(response.data.data);
             } catch (err) {
                 setError(err.message || "Failed to fetch products");
@@ -37,7 +37,7 @@ const TopRatedProducts = () => {
                         <p>{product.Brand}</p>
                         <p>${product.price.toFixed(2)}</p>
                         <p>Average Rating: {product.avgRating.toFixed(1)} / 5</p>{/*round 2 decimal*/}
-                        <button onClick={() => navigate(`/product/get/${product._id}`)}>View Details</button>
+                        <button onClick={() => navigate(`/productdetails/${product._id}`)}>View Details</button>
                     </div>
                 ))}
             </div>

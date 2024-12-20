@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
+import { AddToCart } from "../AddToCart";
 function ProductDetails({ props }) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -9,7 +10,7 @@ function ProductDetails({ props }) {
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await axios
-        .get(`/product/get/${id}`)
+        .get(`https://e-commerce-server-peach.vercel.app/product/get/${id}`)
         .then((res) => {
           setProduct(res.data.data);
         })
@@ -55,7 +56,7 @@ function ProductDetails({ props }) {
               />
             </div>
 
-            <button className="buy-button" disabled={!product.inStock}>
+            <button className="buy-button" disabled={!product.inStock} onClick={AddToCart}>
               {product.inStock ? "Buy Now" : "Out of Stock"}
             </button>
           </div>

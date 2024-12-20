@@ -24,6 +24,7 @@ import EditProfile from "./components/profile/EditProfile";
 import axios from "axios";
 import DashboardLayoutBasic from "./components/DrawerPage/Drawer";
 import Cookies from "js-cookie"; 
+import TopRatedProducts from "./components/HomePageComponents/TopRated";
 // import Cookies from "js-cookie";
 function App() {
  const [user , setUser] =  useState(null);
@@ -59,6 +60,7 @@ function App() {
             <>
               <Categories />
               <Products />
+              <TopRatedProducts/>
               <Featured />
             </>
           }
@@ -74,7 +76,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<CheckOut />} />
-        <Route path="productdetails" element={<ProducDetails />} />
+        <Route path="productdetails/:id" element={<ProducDetails />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
