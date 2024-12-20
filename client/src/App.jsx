@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 //import components
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -22,8 +22,13 @@ import ResetPassword from "./components/ResetPassword";
 import Profile from "./components/profile/Profile";
 import EditProfile from "./components/profile/EditProfile";
 import axios from "axios";
-use
+import Cookies from "js-cookie"
 function App() {
+ const [token , setToken] =  useState(null)
+  useEffect(() => {
+    
+  },[]);
+
   axios.defaults.baseURL = "http://localhost:3001";
   axios.defaults.withCredentials = true;
   return (
