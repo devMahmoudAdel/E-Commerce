@@ -20,18 +20,26 @@ import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
 import axios from "axios";
+import Admin from "./components/Admin/Admin";
+//adminn imports 
+import AdminApp from './components/adminn/AdminApp';
+
 function App() {
   axios.defaults.baseURL = "http://localhost:3001";
   return (
+
     // <<<<<<< Updated upstream
+
     <BrowserRouter>
       <Header />
       <Navbar />
       <Routes>
+
         <Route
           path="/"
           element={
             <>
+
               <Categories />
               <Products />
               <Featured />
@@ -48,10 +56,12 @@ function App() {
         <Route path="checkout" element={<CheckOut />} />
         <Route path="productdetails/:id" element={<ProducDetails />} />
         <Route path="*" element={<Error404 />} />
+        <Route path="/admin/*" element={<AdminApp />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
+
   // // =======
   //         <BrowserRouter>
   //         <Header/>
@@ -72,7 +82,7 @@ function App() {
   //         <Footer/>
   //         </BrowserRouter>
 
-  // // >>>>>>> Stashed changes
+
 }
 
 export default App;
