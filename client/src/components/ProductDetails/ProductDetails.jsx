@@ -48,7 +48,7 @@ function ProductDetails({ props }) {
           <h1 className="product-title">{product.Name}</h1>
           <p className="product-reviews">
             <span className="stars">⭐⭐⭐⭐⭐</span>
-            <span>({product.reviews || 50} Reviews)</span>
+            <span>({product.reviews} Reviews)</span>
             <span className="stock-status">
               {product.inStock ? "In Stock" : "Out of Stock"}
             </span>
