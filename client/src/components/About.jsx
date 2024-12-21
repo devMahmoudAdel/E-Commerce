@@ -12,7 +12,7 @@ import {
   Headphones,
   Shield,
 } from "lucide-react";
-import "./About.css";
+import "./about.css";
 import product1Image from "../assets/Images/image 51.jpg";
 import product2Image from "../assets/Images/image 52.jpg";
 import product3Image from "../assets/Images/image 53.jpg";
