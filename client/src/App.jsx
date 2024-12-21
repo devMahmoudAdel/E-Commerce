@@ -30,9 +30,7 @@ import AdminApp from './components/adminn/AdminApp';
 import DashboardLayoutBasic from "./components/DrawerPage/Drawer";
 import Cookies from "js-cookie"; 
 import TopRatedProducts from "./components/HomePageComponents/TopRated";
-// import Cookies from "js-cookie";
 
-import axios from "axios";
 function App() {
  const [user , setUser] =  useState(null);
   useEffect(()=>{
@@ -55,8 +53,6 @@ function App() {
 
   axios.defaults.baseURL = "http://localhost:3001";
   axios.defaults.withCredentials = true;
-  axios.defaults.withCredentials=true;
-  axios.defaults.baseURL = "http://localhost:3001";
   return (
 
     <BrowserRouter>

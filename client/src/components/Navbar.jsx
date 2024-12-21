@@ -37,6 +37,12 @@ function Navbar() {
   const goToProductPage = (id) => {
     navigate(`/productDetails/:${id}`);
   };
+  const goToCartPage = (id) => {
+    navigate("/Cart");
+  };
+  const goToWishListPage = (id) => {
+    navigate("/WishtList");
+  };
 
   return (
     <div className="navbar">
@@ -121,7 +127,7 @@ function Navbar() {
 
       <div className="icons">
         <div>
-          <img className="icon" src={WishListIcon} alt="Wishlist" />
+          <img className="icon" onClick ={goToCartPage} src={WishListIcon} alt="Wishlist" />
         </div>
         <div>
           <img className="icon" src={CartIcon} alt="Cart" />
@@ -152,8 +158,9 @@ function Navbar() {
         </ul>
       </div>
       </div>
-    </div>
   );
+  
+
 }
 
 export default Navbar;

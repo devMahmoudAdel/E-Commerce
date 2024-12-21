@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, Eye } from 'lucide-react';
+import { LucideReact, Heart, Eye } from 'lucide-react';
 import './Products.css';
 
 import product1Image from '../assets/productsimages/product1.jpg';
