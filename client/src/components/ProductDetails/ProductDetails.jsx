@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
 import { AddToCart } from "../AddToCart";
-function ProductDetails( props ) {
+function ProductDetails({ props }) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -48,7 +48,7 @@ function ProductDetails( props ) {
           <h1 className="product-title">{product.Name}</h1>
           <p className="product-reviews">
             <span className="stars">⭐⭐⭐⭐⭐</span>
-            <span>({product.reviews || 50} Reviews)</span>
+            <span>({product.reviews} Reviews)</span>
             <span className="stock-status">
               {product.inStock ? "In Stock" : "Out of Stock"}
             </span>
@@ -69,7 +69,7 @@ function ProductDetails( props ) {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
-            <button className="buy-button" disabled={!product.inStock}>
+            <button className="buy-button" disabled={!product.inStock}  onClick={AddToCart}>
               {product.inStock ? "Buy Now" : "Out of Stock"}
             </button>
             <button className="wishlist-button">❤</button>

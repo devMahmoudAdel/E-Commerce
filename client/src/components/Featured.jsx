@@ -1,6 +1,6 @@
 import React from 'react';
 import './Featured.css';
-import { Truck, Headphones, Shield } from 'lucide-react'; // Import icons from lucide-react
+import { LucideReact, Truck, Headphones, Shield } from 'lucide-react'; // Import icons from lucide-react
 
 import product1Image from '../assets/productsimages/product1.jpg';
 import product2Image from '../assets/productsimages/product2.jpg';

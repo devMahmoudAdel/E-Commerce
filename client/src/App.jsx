@@ -19,59 +19,48 @@ import ProducDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
-import Profile from "./components/profile/Profile";
-import EditProfile from "./components/profile/EditProfile";
 import axios from "axios";
-import Admin from "./components/Admin/Admin";
-//adminn imports 
-import AdminApp from './components/adminn/AdminApp';
-import Cookies from "js-cookie"; 
+import AdminApp from "./components/adminn/AdminApp";
+import EditProfile from "./components/profile/EditProfile";
+import Profile from "./components/profile/Profile";
+import Cookies from "js-cookie";
 import TopRatedProducts from "./components/HomePageComponents/TopRated";
-// import Cookies from "js-cookie";
 
 function App() {
- const [user , setUser] =  useState(null);
-  useEffect(()=>{
-    const token = Cookies.get("jwt"); 
-  // setToken(localStorage.getItem("jwt"));
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      async function fetchData() {
-        const response = await axios.get("/user/getMe").then((d) => {
-          console.log(d.data);
-          setUser(d.data);
-        });
-      }
-      fetchData();
-      } else {
-    delete axios.defaults.headers.common["Authorization"];
-  }}, []);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
+  useEffect(() => {
+    const token = Cookies.get("jwt");
+    if (token) {
+      setToken(token);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+    }
+  }, [token]);
 
-
-  axios.defaults.baseURL = "http://localhost:3001";
+  axios.defaults.baseURL = "https://e-commerce-server-peach.vercel.app/";
+  // axios.defaults.baseURL = "http://localhost:3001";
   axios.defaults.withCredentials = true;
   return (
-
     <BrowserRouter>
       <Header />
       <Navbar />
       <Routes>
-
         <Route
           path="/"
           element={
             <>
-
               <Categories />
               <Products />
-              <TopRatedProducts/>
+              <TopRatedProducts />
               <Featured />
             </>
           }
         />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<LogIn />} />
+        <Route path="signup" element={<SignUp settoken={setToken} />} />
+        <Route path="login" element={<LogIn settoken={setToken} />} />
         <Route path="profile" element={<Profile />} />
         <Route path="editprofile" element={<EditProfile />} />
         <Route path="resetpassword" element={<ResetPassword />} />
@@ -87,7 +76,6 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
-
 }
 
 export default App;

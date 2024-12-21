@@ -1,6 +1,12 @@
 import axios from "axios";
-import { useState ,useEffect} from "react";
-import { Box, Button, CircularProgress, Container, Typography } from "@mui/material";
+import { useState, useEffect } from "react";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Typography,
+} from "@mui/material";
 import product1Image from "../../assets/productsimages/product1.jpg";
 import product2Image from "../../assets/productsimages/product2.jpg";
 import product3Image from "../../assets/productsimages/product3.jpg";
@@ -11,53 +17,54 @@ import { AddToCart } from "../AddToCart";
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(true);
-   useEffect(() => {
-     const fetchWishlist = async () => {
-       try {
-         const response = await axios.get("/user/getwishList");
-         setWishlist(response.data);
-         setLoading(false);
-       } catch (error) {
-         console.error("Error fetching wishlist:", error);
-         setLoading(false);
-       }
-     };
-
-     fetchWishlist();
-   }, []);
-    const deleteWishlistItem = async (id) => {
+  useEffect(() => {
+    const fetchWishlist = async () => {
       try {
-        await axios.delete(`https://your-api-endpoint.com/wishlist/${id}`);
-        setWishlist(wishlist.filter((item) => item._id !== id));
+        await axios.get("/user/getwishList").then((response) => {
+          setWishlist(response.data.data);
+          setLoading(false);
+        });
       } catch (error) {
-        console.error("Error deleting wishlist item:", error);
+        console.error("Error fetching wishlist:", error);
+        setLoading(false);
       }
     };
-    const moveAllToCart = async () => {
-      try {
+
+    fetchWishlist();
+  }, []);
+  const deleteWishlistItem = async (id) => {
+    try {
+      await axios.delete(`/wishlist/${id}`);
+      setWishlist(wishlist.filter((item) => item._id !== id));
+    } catch (error) {
+      console.error("Error deleting wishlist item:", error);
+    }
+  };
+  const moveAllToCart = async () => {
+    try {
       await axios.post("/user/addToCart", {
-      items: wishlist,
+        items: wishlist,
       });
       setWishlist([]);
-      } catch (error) {
-        console.error("Error moving items to cart:", error);
-      }
-    };
-    
-     if (loading) {
-       return (
-         <Box
-           sx={{
-             display: "flex",
-             justifyContent: "center",
-             alignItems: "center",
-             height: "100vh",
-           }}
-         >
-           <CircularProgress sx={{ color: "#be0d0d" }} />
-         </Box>
-       );
-     }
+    } catch (error) {
+      console.error("Error moving items to cart:", error);
+    }
+  };
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress sx={{ color: "#be0d0d" }} />
+      </Box>
+    );
+  }
   return (
     <Container
       sx={{
@@ -135,9 +142,6 @@ function Wishlist() {
                   flexDirection: "column",
                 }}
                 key={product._id}
-                onClick={() =>
-                  (window.location.href = `/ProductDetails/${product._id}`)
-                }
               >
                 <Box
                   sx={{
@@ -174,10 +178,11 @@ function Wishlist() {
                         width: "100%",
                       }}
                       loading="lazy"
-                      src={
-                        product.images?.[0]?.secure_url || "default-image.jpg"
-                      }
+                      src={product.images[0].secure_url}
                       alt={product.Name}
+                      onClick={() =>
+                        (window.location.href = `/ProductDetails/${product._id}`)
+                      }
                     />
                   </div>
 
@@ -197,7 +202,7 @@ function Wishlist() {
                     }}
                     className="product-name"
                   >
-                    {product.name}
+                    {product.Name}
                   </Typography>
                   <Typography className="price">${product.price}</Typography>
                 </div>

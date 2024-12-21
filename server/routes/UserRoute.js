@@ -1,6 +1,5 @@
 const express = require("express");
 const usercontroller = require("../controllers/UserController");
-const { route } = require("./OrderRoute");
 // controller import
 const router = express.Router();
 router.route("/register").post(usercontroller.register);
@@ -10,6 +9,14 @@ router
     usercontroller.protect,
     usercontroller.isAdminforInteriorUse,
     usercontroller.getUser
+  );
+
+router
+  .route("getAllUser")
+  .get(
+    usercontroller.protect,
+    usercontroller.isAdminforInteriorUse,
+    usercontroller.getAllUsers
   );
 
 router.route("/getMe").get(usercontroller.protect, usercontroller.getMe);

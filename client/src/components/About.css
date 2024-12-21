@@ -60,11 +60,17 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease; /* Changed to all for smoother transition */
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
+  background-color: #ef4444; /* Red background on hover */
+  color: white; /* White text on hover */
+}
+
+.stat-card:hover .stat-icon {
+  color: white; /* White icon on hover */
 }
 
 .stat-card.highlight {

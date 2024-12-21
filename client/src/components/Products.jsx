@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Heart, Eye } from 'lucide-react'; 
-import './Products.css'; 
-import axios from 'axios';
-import product1Image from '../assets/productsimages/product1.jpg';
-import product2Image from '../assets/productsimages/product2.jpg';
-import product3Image from '../assets/productsimages/product3.jpg';
-import ProductDetails from './ProductDetails/ProductDetails';
-import { AddToCart } from './AddToCart';
-import AddToWishlist from './AddToWishlist';
-import { useNavigate } from 'react-router-dom';
-import { Alert } from '@mui/material';
-import Product from './Product';
+import React, { useEffect, useState } from "react";
+import { Heart, Eye } from "lucide-react";
+import "./Products.css";
+import axios from "axios";
+import product1Image from "../assets/productsimages/product1.jpg";
+import product2Image from "../assets/productsimages/product2.jpg";
+import product3Image from "../assets/productsimages/product3.jpg";
+import ProductDetails from "./ProductDetails/ProductDetails";
+import { AddToCart } from "./AddToCart";
+import AddToWishlist from "./AddToWishlist";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "@mui/material";
 
 const Products = () => {
   const [products, setProducts] = useState([]); // Initialize as an empty array
@@ -18,23 +17,21 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-    useEffect(() => {
-      const fetchProducts = async () => {
-        try {
-         const response = await axios.get("/product/getAll");
-          setProducts(response.data);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("/product/getAll"); // Replace with your API endpoint
+        setProducts(response.data);
+      } catch (err) {
+        setError("Failed to fetch products.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        } catch (err) {
-          setError("Failed to fetch products.");
-        } finally {
-          setLoading(false);
-        }
-      };
+    fetchProducts();
+  }, []);
 
-      fetchProducts();
-    }, []);
-
-  
   const handleViewAll = () => {
     setShowAll(true);
   };
@@ -48,9 +45,11 @@ const Products = () => {
 
       {products && (
         <div className="products-grid">
-          {products && products.length > 0 &&products.slice(0, showAll ? products.length : 10).map((product) => (
-          <Product key={product._id} product={product} />  
-          ))}
+          {products &&
+            products.length > 0 &&
+            products
+              .slice(0, showAll ? products.length : 10)
+              .map((product) => <></>)}
         </div>
       )}
 
