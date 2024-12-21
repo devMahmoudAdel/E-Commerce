@@ -11,7 +11,8 @@ import {
   Headphones,
   Shield,
 } from "lucide-react";
-import "./about.css";
+import "./About.css";
+
 import product1Image from "../assets/productsimages/product1.jpg";
 import product2Image from "../assets/productsimages/product2.jpg";
 import product3Image from "../assets/productsimages/product3.jpg";
