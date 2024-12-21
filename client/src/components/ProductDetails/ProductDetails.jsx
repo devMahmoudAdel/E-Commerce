@@ -69,7 +69,7 @@ function ProductDetails({ props }) {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
-            <button className="buy-button" disabled={!product.inStock}>
+            <button className="buy-button" disabled={!product.inStock}  onClick={AddToCart}>
               {product.inStock ? "Buy Now" : "Out of Stock"}
             </button>
             <button className="wishlist-button">❤</button>
