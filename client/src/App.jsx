@@ -19,7 +19,10 @@ import ProducDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import CheckOut from "./components/CheckOut";
 import ResetPassword from "./components/ResetPassword";
+import axios from "axios";
 function App() {
+  axios.defaults.withCredentials=true;
+  axios.defaults.baseURL = "http://localhost:3001";
   return (
 // <<<<<<< Updated upstream
     <BrowserRouter>

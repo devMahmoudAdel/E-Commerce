@@ -41,7 +41,7 @@ router
   .get(usercontroller.protect, productcontroller.getproduct); //OMAR
 router
   .route("/getAll")
-  .get(usercontroller.protect, productcontroller.getAllproduct); //AHMED
+  .get(productcontroller.getAllproduct); //AHMED
 router
   .route("/getByCategory/:category")
   .get(usercontroller.protect, productcontroller.getByCategory); //NOOR

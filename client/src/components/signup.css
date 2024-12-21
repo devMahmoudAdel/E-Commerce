@@ -63,8 +63,8 @@ input::placeholder{
   font-size: 10x;
 }
 input:focus {
-  border: 2px solid black;
-  border-radius: 6px;
+  /* border: 2px solid black; */
+  /* border-radius: 6px;/ */
 }
 button {
   width: 90%;
