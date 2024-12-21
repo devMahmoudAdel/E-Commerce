@@ -10,6 +10,8 @@ function ProductDetails({ props }) {
   const [quantity, setQuantity] = useState(1);
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState('');
+  const [faildrating, setfaildrating] = useState('');
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -40,6 +42,7 @@ function ProductDetails({ props }) {
 
     } catch (err) {
       console.error("Failed to add review:", err);
+      setfaildrating('you already added rating before')
     }
   };
 
@@ -130,8 +133,9 @@ function ProductDetails({ props }) {
                 required
               />
               <button type="submit" className="buy-button">
-                Add Review
+                Add Review 
               </button>
+              <span className="faildrating">{faildrating}</span>
             </form>
           </div>
         </div>
