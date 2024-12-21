@@ -147,7 +147,6 @@ function AdminApp({ setToken }) {
           })} */}
 
           <Route path="CreateProduct" element={<CreateProduct />} />
-          <Route path="CreateProduct" element={<CreateProduct />} />
           {/* <Route path="EditProduct" element={<EditProductWithNoID />} /> */}
           <Route path="EditAndDeleteProduct/" element={<EditProduct />} />
           <Route
