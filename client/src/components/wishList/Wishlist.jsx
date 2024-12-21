@@ -20,9 +20,10 @@ function Wishlist() {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const response = await axios.get("/user/getwishList");
-        setWishlist(response.data);
-        setLoading(false);
+        await axios.get("/user/getwishList").then((response) => {
+          setWishlist(response.data.data);
+          setLoading(false);
+        });
       } catch (error) {
         console.error("Error fetching wishlist:", error);
         setLoading(false);
@@ -140,7 +141,7 @@ function Wishlist() {
                   justifyContent: "space-between",
                   flexDirection: "column",
                 }}
-                key={product.id}
+                key={product._id}
                 onClick={() =>
                   (window.location.href = `/ProductDetails/${product.id}`)
                 }
@@ -180,7 +181,7 @@ function Wishlist() {
                         width: "100%",
                       }}
                       loading="lazy"
-                      src={product.images}
+                      src={product.images[0].secure_url}
                       alt={product.name}
                     />
                   </div>
@@ -201,7 +202,7 @@ function Wishlist() {
                     }}
                     className="product-name"
                   >
-                    {product.name}
+                    {product.Name}
                   </Typography>
                   <Typography className="price">${product.price}</Typography>
                 </div>
