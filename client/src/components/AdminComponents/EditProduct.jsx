@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import './EditProduct.css'
 function EditProduct() {
   const Navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -16,10 +17,10 @@ function EditProduct() {
   }, []);
 
   return (
-    <div>
+    <div className="all-page" >
       {products.map((product, i) => {
         return (
-          <div key={i}>
+          <div key={i} className="whole-product">
             <h6>{product.Name}</h6>
             <img
               style={{

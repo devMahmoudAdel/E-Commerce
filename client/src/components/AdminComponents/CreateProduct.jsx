@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import axios from "axios";
+import './CreateProduct.css'
 function CreateProduct() {
   const [name, setname] = useState("");
   const [price, setPrice] = useState("");
@@ -31,7 +32,7 @@ function CreateProduct() {
   };
   return (
     <div>
-      <h1>Create Product</h1>
+      <h1 className="state">Create Product</h1>
       <form onSubmit={handleSubmit}>
         <label>Product Name:</label>
         <input
