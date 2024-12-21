@@ -41,7 +41,7 @@ function Navbar() {
     navigate("/Cart");
   };
   const goToWishListPage = (id) => {
-    navigate("/WishtList");
+    navigate("/wishlist");
   };
 
   return (
@@ -127,10 +127,10 @@ function Navbar() {
 
       <div className="icons">
         <div>
-          <img className="icon" onClick ={goToCartPage} src={WishListIcon} alt="Wishlist" />
+          <img className="icon" onClick ={goToWishListPage} src={WishListIcon} alt="Wishlist" />
         </div>
         <div>
-          <img className="icon" src={CartIcon} alt="Cart" />
+          <img className="icon" onClick = {goToCartPage} src={CartIcon} alt="Cart" />
         </div>
       </div>
 

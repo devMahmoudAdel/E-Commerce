@@ -51,7 +51,7 @@ function App() {
 
 
 
-  axios.defaults.baseURL = "http://localhost:3001";
+  axios.defaults.baseURL = "https://e-commerce-server-peach.vercel.app/";
   axios.defaults.withCredentials = true;
   return (
 

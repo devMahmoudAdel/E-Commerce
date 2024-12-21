@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
 import { AddToCart } from "../AddToCart";
+import AddToWishlist from "../AddToWishlist";
 function ProductDetails( props ) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -72,7 +73,7 @@ function ProductDetails( props ) {
             <button className="buy-button" disabled={!product.inStock}>
               {product.inStock ? "Buy Now" : "Out of Stock"}
             </button>
-            <button className="wishlist-button">❤</button>
+            <button onClick = {() => AddToWishlist(product)} className="wishlist-button">❤</button>
           </div>
 
           <div className="delivery-info">
