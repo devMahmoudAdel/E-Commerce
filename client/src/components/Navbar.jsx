@@ -120,8 +120,12 @@ function Navbar() {
       </div>
 
       <div className="icons">
-        <div><img src={WishListIcon} alt="Wishlist" /></div>
-        <div><img src={CartIcon} alt="Cart" /></div>
+        <div>
+          <img className="icon" src={WishListIcon} alt="Wishlist" />
+        </div>
+        <div>
+          <img className="icon" src={CartIcon} alt="Cart" />
+        </div>
       </div>
 
       {/* Add Order Button */}
@@ -136,6 +140,9 @@ function Navbar() {
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </span>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -143,6 +150,7 @@ function Navbar() {
           <li><Link to="/about">About</Link></li>
           <li><Link to="/signup">Sign Up</Link></li>
         </ul>
+      </div>
       </div>
     </div>
   );

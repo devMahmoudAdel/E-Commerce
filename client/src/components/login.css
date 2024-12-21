@@ -1,0 +1,15 @@
+.signin {
+  margin: 50px auto;
+  min-height: 300px;
+}
+.error-button {
+  background-color: transparent !important;
+  border: 1px solid black !important;
+  transition: 0.3s ease-in-out !important;
+  color: black;
+}
+.error-button:hover {
+  background-color: #db4444 !important;
+  border: 1px solid #db4444 !important;
+  color: white;
+}
