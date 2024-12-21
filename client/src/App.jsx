@@ -24,6 +24,7 @@ import AdminApp from "./components/adminn/AdminApp";
 import EditProfile from "./components/profile/EditProfile";
 import Profile from "./components/profile/Profile";
 import Cookies from "js-cookie";
+import TopRatedProducts from "./components/HomePageComponents/TopRated";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -59,6 +60,7 @@ function App() {
             <>
               <Categories />
               <Products />
+              <TopRatedProducts />
               <Featured />
             </>
           }
@@ -80,26 +82,6 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
-
-  // // =======
-  //         <BrowserRouter>
-  //         <Header/>
-  //         <Navbar/>
-  //         <Routes>
-  //           <Route path="/" element={<><Categories/><Products /><Featured/></>} />
-  //           <Route path="signup" element={<SignUp />} />
-  //           <Route path="login" element={<LogIn />} />
-  //           <Route path="resetpassword" element={<ResetPassword />} />
-  //           <Route path="wishlist" element={<Wishlist />} />
-  //           <Route path="contact" element={<Contact />} />
-  //           <Route path="about" element={<About />} />
-  //           <Route path="cart" element={<Cart />} />
-  //           <Route path="checkout" element={<CheckOut />}/>
-  //           <Route path="productdetails" element={<ProducDetails />} />
-  //           <Route path="*" element={<Error404 />} />
-  //         </Routes>
-  //         <Footer/>
-  //         </BrowserRouter>
 }
 
 export default App;
