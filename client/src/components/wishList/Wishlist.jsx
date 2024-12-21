@@ -142,9 +142,6 @@ function Wishlist() {
                   flexDirection: "column",
                 }}
                 key={product._id}
-                onClick={() =>
-                  (window.location.href = `/ProductDetails/${product.id}`)
-                }
               >
                 <Box
                   sx={{
@@ -183,6 +180,9 @@ function Wishlist() {
                       loading="lazy"
                       src={product.images[0].secure_url}
                       alt={product.name}
+                      onClick={() =>
+                        (window.location.href = `/ProductDetails/${product._id}`)
+                      }
                     />
                   </div>
 
