@@ -283,7 +283,6 @@ const Products = () => {
               </div>
               <button className="add-to-cart-button">Add To Cart</button>
             </div>
-
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <div className="product-meta">
