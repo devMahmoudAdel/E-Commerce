@@ -16,7 +16,6 @@ function Cart() {
 
         const calculatedTotal = response.data.reduce(
            (sum, item) => sum + item.price * item.quantity,
-            0
         );
           setTotal(calculatedTotal);
         } catch (error) {

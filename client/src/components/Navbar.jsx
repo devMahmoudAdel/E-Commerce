@@ -6,6 +6,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import SearchIcon from "../assets/Images/search.png";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faUser} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 function Navbar() {
@@ -35,7 +37,7 @@ function Navbar() {
 
   // Handle navigation to the Order page
   const goToProductPage = (id) => {
-    navigate(`/productDetails/:${id}`);
+    navigate(`/productDetails/${id}`);
   };
   const goToCartPage = (id) => {
     navigate("/Cart");
@@ -131,6 +133,9 @@ function Navbar() {
         </div>
         <div>
           <img className="icon" onClick = {goToCartPage} src={CartIcon} alt="Cart" />
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faUser} alt="Profile" onClick={goToCartPage}/>
         </div>
       </div>
 
