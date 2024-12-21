@@ -22,7 +22,7 @@ function Product(props) {
       <div className="product-image-container">
         {product.isNew && <span className="new-badge">NEW</span>}
         <img
-          src={product.image[0].secure_url}
+          src={product.images?.[0]?.secure_url || "default-image.jpg"}
           alt={product.Name}
           className="product-image"
         />
@@ -35,7 +35,7 @@ function Product(props) {
           </button>
           <button
             className="icon-button eye-button"
-            onClick={() => navigate(`/productdetails/${product.id}`)}
+            onClick={() => navigate(`/productdetails/${product._id}`)}
           >
             <Eye size={20} />
           </button>
@@ -49,11 +49,11 @@ function Product(props) {
       </div>
 
       <div className="product-info">
-        <h3 className="product-name">{product.name}</h3>
+        <h3 className="product-name">{product.Name}</h3>
         <div className="product-meta">
-          <span className="product-price">${product.price}</span>
+          <span className="product-price">${product.price.toFixed(2)}</span>
           <div className="product-rating">
-            {renderStars(product.rating)}
+            {renderStars(product.avgrating)}
             <span className="review-count">({product.reviews})</span>
           </div>
         </div>

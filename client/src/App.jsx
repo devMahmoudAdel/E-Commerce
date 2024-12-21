@@ -25,9 +25,6 @@ import axios from "axios";
 import Admin from "./components/Admin/Admin";
 //adminn imports 
 import AdminApp from './components/adminn/AdminApp';
-
-
-import DashboardLayoutBasic from "./components/DrawerPage/Drawer";
 import Cookies from "js-cookie"; 
 import TopRatedProducts from "./components/HomePageComponents/TopRated";
 // import Cookies from "js-cookie";
@@ -73,8 +70,6 @@ function App() {
             </>
           }
         />
-
-        <Route path="drawer" element={<DashboardLayoutBasic/>} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
         <Route path="profile" element={<Profile />} />

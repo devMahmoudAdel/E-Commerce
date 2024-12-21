@@ -10,6 +10,7 @@ import { AddToCart } from './AddToCart';
 import AddToWishlist from './AddToWishlist';
 import { useNavigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
+import Product from './Product';
 
 const Products = () => {
   const [products, setProducts] = useState([]); // Initialize as an empty array
@@ -20,8 +21,9 @@ const Products = () => {
     useEffect(() => {
       const fetchProducts = async () => {
         try {
-         const response = await axios.get("/product/getAll"); // Replace with your API endpoint
+         const response = await axios.get("/product/getAll");
           setProducts(response.data);
+
         } catch (err) {
           setError("Failed to fetch products.");
         } finally {
@@ -47,7 +49,7 @@ const Products = () => {
       {products && (
         <div className="products-grid">
           {products && products.length > 0 &&products.slice(0, showAll ? products.length : 10).map((product) => (
-          <></>  
+          <Product key={product._id} product={product} />  
           ))}
         </div>
       )}
@@ -64,5 +66,3 @@ const Products = () => {
 };
 
 export default Products;
-
-

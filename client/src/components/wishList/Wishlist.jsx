@@ -28,7 +28,7 @@ function Wishlist() {
     const deleteWishlistItem = async (id) => {
       try {
         await axios.delete(`https://your-api-endpoint.com/wishlist/${id}`);
-        setWishlist(wishlist.filter((item) => item.id !== id));
+        setWishlist(wishlist.filter((item) => item._id !== id));
       } catch (error) {
         console.error("Error deleting wishlist item:", error);
       }
@@ -134,8 +134,10 @@ function Wishlist() {
                   justifyContent: "space-between",
                   flexDirection: "column",
                 }}
-                key={product.id}
-                onClick={() => window.location.href = `/ProductDetails/${product.id}`}
+                key={product._id}
+                onClick={() =>
+                  (window.location.href = `/ProductDetails/${product._id}`)
+                }
               >
                 <Box
                   sx={{
@@ -149,7 +151,7 @@ function Wishlist() {
                   <button
                     title="Delete"
                     className="delete-btn"
-                    onClick={() => deleteWishlistItem(product.id)}
+                    onClick={() => deleteWishlistItem(product._id)}
                   >
                     <DeleteIcon />
                   </button>
@@ -172,8 +174,10 @@ function Wishlist() {
                         width: "100%",
                       }}
                       loading="lazy"
-                      src={product.images}
-                      alt={product.name}
+                      src={
+                        product.images?.[0]?.secure_url || "default-image.jpg"
+                      }
+                      alt={product.Name}
                     />
                   </div>
 
