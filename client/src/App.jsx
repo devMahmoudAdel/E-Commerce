@@ -35,12 +35,6 @@ function App() {
     if (token) {
       setToken(token);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      async function fetchData() {
-        const response = await axios.get("/user/getMe").then((d) => {
-          setUser(d.data);
-        });
-      }
-      fetchData();
     } else {
       delete axios.defaults.headers.common["Authorization"];
     }

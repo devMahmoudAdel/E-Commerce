@@ -17,6 +17,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CreateProduct from "../AdminComponents/CreateProduct";
 import EditProduct from "../AdminComponents/EditProduct";
 import EditProducttt from "../AdminComponents/EditProducttt";
+import EditUser from "../AdminComponents/EditUser";
+import EditUserrrr from "../AdminComponents/EditUserrrr";
+import GetAllAdmins from "../AdminComponents/GetAllAdmins";
+import AddMoneyToWallet from "../AdminComponents/AddMoneyToWallet";
 function AdminApp({ setToken }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -25,28 +29,26 @@ function AdminApp({ setToken }) {
   };
 
   const list = [
-    { title: "GetUserWithID", navigate: "GetUserWithID" }, //3
+    // { title: "GetUserWithID", navigate: "GetUserWithID" }, //3
     // { title: "ChangeUserToAdmin", navigate: "ChangeUserToAdmin" },
     // { title: "ChangeAdminToUser", navigate: "ChangeAdminToUser" },
-    { title: "AddMoneyToWallet", navigate: "AddMoneyToWallet" }, //2
+    // { title: "AddMoneyToWallet", navigate: "AddMoneyToWallet" }, //2
     // { title: "GetAllAdressForUser", navigate: "GetAllAdressForUser" },
     // { title: "GetAllAdress", navigate: "GetAllAdress" },
     { title: "GetAllAdmins", navigate: "GetAllAdmins" }, //3
 
     ///begin
     { title: "Edituser", navigate: "Edituser" },
-    { title: "DeleteUser", navigate: "DeleteUser" }, //2
-    { title: "ReActiveUser", navigate: "ReActiveUser" }, //2
     { title: "CreateProduct", navigate: "CreateProduct" }, //1
     { title: "EditAndDeleteProduct", navigate: "EditAndDeleteProduct" }, //1
     ////begin
 
-    { title: "ChangeStatusOrder", navigate: "ChangeStatusOrder" }, //2
-    {
-      title: "ChangeDeliveryNumberOrder",
-      navigate: "ChangeDeliveryNumberOrder",
-    }, //3
-    { title: "GetAllOredrsForAdmin", navigate: "GetAllOredrsForAdmin" }, //2
+    // { title: "ChangeStatusOrder", navigate: "ChangeStatusOrder" }, //2
+    // {
+    //   title: "ChangeDeliveryNumberOrder",
+    //   navigate: "ChangeDeliveryNumberOrder",
+    // }, //3
+    // { title: "GetAllOredrsForAdmin", navigate: "GetAllOredrsForAdmin" }, //2
     // { title: "CreateAds", navigate: "CreateAds" },
     // { title: "EditAd", navigate: "EditAd" },
     // { title: "ChangeActivationAD", navigate: "ChangeActivationAD" },
@@ -136,24 +138,16 @@ function AdminApp({ setToken }) {
       >
         <Routes>
           <Route path="/" element={<>choose one of the drawer to show</>} />
-          {/* {list.map((item) => {
-            return (
-              <Route
-                key={item.title}
-                path={`${item.navigate}`}
-                element={<EditItem />}
-              />
-            );
-          })} */}
-
           <Route path="CreateProduct" element={<CreateProduct />} />
-          {/* <Route path="EditProduct" element={<EditProductWithNoID />} /> */}
           <Route path="EditAndDeleteProduct/" element={<EditProduct />} />
           <Route
             path="EditAndDeleteProduct/edit/:id"
             element={<EditProducttt />}
           />
-
+          <Route path="EditUser" element={<EditUser />} />
+          <Route path="EditUser/addMoney/:id" element={<AddMoneyToWallet />} />
+          <Route path="EditUser/edit/:id" element={<EditUserrrr />} />
+          <Route path="GetAllAdmins" element={<GetAllAdmins />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Box>

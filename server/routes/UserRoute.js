@@ -11,6 +11,14 @@ router
     usercontroller.getUser
   );
 
+router
+  .route("getAllUser")
+  .get(
+    usercontroller.protect,
+    usercontroller.isAdminforInteriorUse,
+    usercontroller.getAllUsers
+  );
+
 router.route("/getMe").get(usercontroller.protect, usercontroller.getMe);
 
 router.route("/login").post(usercontroller.isActive, usercontroller.login);

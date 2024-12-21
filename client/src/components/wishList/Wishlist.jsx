@@ -28,8 +28,17 @@ function Wishlist() {
         setLoading(false);
       }
     };
+
     fetchWishlist();
   }, []);
+  const deleteWishlistItem = async (id) => {
+    try {
+      await axios.delete(`https://your-api-endpoint.com/wishlist/${id}`);
+      setWishlist(wishlist.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting wishlist item:", error);
+    }
+  };
   const moveAllToCart = async () => {
     try {
       await axios.post("/user/addToCart", {

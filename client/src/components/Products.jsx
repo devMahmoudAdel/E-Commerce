@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Heart, Eye } from 'lucide-react';
-import './Products.css';
+import React, { useState } from "react";
+import { Heart, Eye } from "lucide-react";
+import "./Products.css";
 
-import product1Image from '../assets/productsimages/product1.jpg';
-import product2Image from '../assets/productsimages/product2.jpg';
-import product3Image from '../assets/productsimages/product3.jpg';
+import product1Image from "../assets/productsimages/product1.jpg";
+import product2Image from "../assets/productsimages/product2.jpg";
+import product3Image from "../assets/productsimages/product3.jpg";
 
 const Products = () => {
   const [showAll, setShowAll] = useState(false);
@@ -12,7 +12,7 @@ const Products = () => {
   const products = [
     {
       id: 1,
-      name: 'Product 1',
+      name: "Product 1",
       price: 29.99,
       rating: 4,
       reviews: 10,
@@ -21,7 +21,7 @@ const Products = () => {
     },
     {
       id: 2,
-      name: 'Product 2',
+      name: "Product 2",
       price: 39.99,
       rating: 5,
       reviews: 8,
@@ -30,7 +30,7 @@ const Products = () => {
     },
     {
       id: 3,
-      name: 'Product 3',
+      name: "Product 3",
       price: 19.99,
       rating: 3,
       reviews: 15,
@@ -39,7 +39,7 @@ const Products = () => {
     },
     {
       id: 4,
-      name: 'Product 4',
+      name: "Product 4",
       price: 49.99,
       rating: 4,
       reviews: 12,
@@ -48,7 +48,7 @@ const Products = () => {
     },
     {
       id: 5,
-      name: 'Product 5',
+      name: "Product 5",
       price: 59.99,
       rating: 5,
       reviews: 20,
@@ -57,7 +57,7 @@ const Products = () => {
     },
     {
       id: 6,
-      name: 'Product 6',
+      name: "Product 6",
       price: 24.99,
       rating: 2,
       reviews: 5,
@@ -66,7 +66,7 @@ const Products = () => {
     },
     {
       id: 7,
-      name: 'Product 7',
+      name: "Product 7",
       price: 34.99,
       rating: 4,
       reviews: 7,
@@ -75,7 +75,7 @@ const Products = () => {
     },
     {
       id: 8,
-      name: 'Product 8',
+      name: "Product 8",
       price: 44.99,
       rating: 3,
       reviews: 9,
@@ -84,7 +84,7 @@ const Products = () => {
     },
     {
       id: 9,
-      name: 'Product 9',
+      name: "Product 9",
       price: 54.99,
       rating: 5,
       reviews: 11,
@@ -93,7 +93,7 @@ const Products = () => {
     },
     {
       id: 10,
-      name: 'Product 10',
+      name: "Product 10",
       price: 64.99,
       rating: 4,
       reviews: 13,
@@ -102,7 +102,7 @@ const Products = () => {
     },
     {
       id: 11,
-      name: 'Product 11',
+      name: "Product 11",
       price: 74.99,
       rating: 5,
       reviews: 14,
@@ -111,7 +111,7 @@ const Products = () => {
     },
     {
       id: 12,
-      name: 'Product 12',
+      name: "Product 12",
       price: 84.99,
       rating: 3,
       reviews: 16,
@@ -120,7 +120,7 @@ const Products = () => {
     },
     {
       id: 13,
-      name: 'Product 13',
+      name: "Product 13",
       price: 94.99,
       rating: 4,
       reviews: 18,
@@ -129,7 +129,7 @@ const Products = () => {
     },
     {
       id: 14,
-      name: 'Product 14',
+      name: "Product 14",
       price: 104.99,
       rating: 5,
       reviews: 19,
@@ -138,7 +138,7 @@ const Products = () => {
     },
     {
       id: 15,
-      name: 'Product 15',
+      name: "Product 15",
       price: 114.99,
       rating: 2,
       reviews: 21,
@@ -147,7 +147,7 @@ const Products = () => {
     },
     {
       id: 16,
-      name: 'Product 16',
+      name: "Product 16",
       price: 124.99,
       rating: 4,
       reviews: 22,
@@ -156,7 +156,7 @@ const Products = () => {
     },
     {
       id: 17,
-      name: 'Product 17',
+      name: "Product 17",
       price: 134.99,
       rating: 3,
       reviews: 23,
@@ -165,7 +165,7 @@ const Products = () => {
     },
     {
       id: 18,
-      name: 'Product 18',
+      name: "Product 18",
       price: 144.99,
       rating: 5,
       reviews: 24,
@@ -174,7 +174,7 @@ const Products = () => {
     },
     {
       id: 19,
-      name: 'Product 19',
+      name: "Product 19",
       price: 154.99,
       rating: 4,
       reviews: 25,
@@ -183,7 +183,7 @@ const Products = () => {
     },
     {
       id: 20,
-      name: 'Product 20',
+      name: "Product 20",
       price: 164.99,
       rating: 5,
       reviews: 26,
@@ -192,7 +192,7 @@ const Products = () => {
     },
     {
       id: 21,
-      name: 'Product 21',
+      name: "Product 21",
       price: 174.99,
       rating: 3,
       reviews: 27,
@@ -201,7 +201,7 @@ const Products = () => {
     },
     {
       id: 22,
-      name: 'Product 22',
+      name: "Product 22",
       price: 184.99,
       rating: 4,
       reviews: 28,
@@ -210,7 +210,7 @@ const Products = () => {
     },
     {
       id: 23,
-      name: 'Product 23',
+      name: "Product 23",
       price: 194.99,
       rating: 5,
       reviews: 29,
@@ -219,7 +219,7 @@ const Products = () => {
     },
     {
       id: 24,
-      name: 'Product 24',
+      name: "Product 24",
       price: 204.99,
       rating: 2,
       reviews: 30,
@@ -228,23 +228,20 @@ const Products = () => {
     },
     {
       id: 25,
-      name: 'Product 25',
+      name: "Product 25",
       price: 214.99,
       rating: 4,
       reviews: 31,
       isNew: true,
       image: product1Image,
-    }
+    },
   ];
 
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(
-        <span
-          key={i}
-          className={`star ${i <= rating ? 'filled' : ''}`}
-        >
+        <span key={i} className={`star ${i <= rating ? "filled" : ""}`}>
           ★
         </span>
       );
