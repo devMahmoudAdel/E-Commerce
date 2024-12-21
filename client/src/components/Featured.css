@@ -1,0 +1,213 @@
+.featured-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  /* background-color: #f5f5f5; */
+  /* height: 80vh; */
+  /* overflow: hidden; */
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.featured-header {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.products-header {
+  margin-bottom: 32px;
+}
+
+.products-label {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.products-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.products-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: calc(100% - 80px);
+  overflow: hidden;
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.left-column {
+  flex: 2 1 60%;
+}
+
+.right-column {
+  flex: 1 1 30%;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  text-align: center;
+  background-color: #fff;
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.big-card {
+  flex: 2 1 60%;
+}
+
+.small-card {
+  flex: 1 1 30%;
+}
+
+.details {
+    padding: 20px;
+    background: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.2); /* Optional: Add a slight background for readability */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-grow: 1;
+}
+
+.name {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #333;
+    text-align: left;
+}
+
+.description {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.price {
+  font-weight: bold;
+  color: #333; /* Default color */
+  font-size: 1.2em;
+  text-align: left;
+  width: 100%;
+  transition: color 0.3s ease; /* Add smooth transition */
+}
+
+.card:hover .price {
+  color: #ef4444; /* Red color on hover */
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: #161515;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.service-icon {
+  width: 40px;
+  height: 40px;
+  color: rgb(255, 255, 255);
+}
+
+.service-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.service-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+    gap: 20px; /* Adjusted gap */
+  }
+
+  .products-wrapper {
+    flex-direction: column; /* Stack columns vertically */
+  }
+
+  .left-column, .right-column {
+    flex: 1 1 100%; /* Make columns full width */
+  }
+
+  .name {
+    font-size: 1.2em; /* Adjust font size for smaller screens */
+  }
+
+  .description {
+    font-size: 0.9em; /* Adjust font size for smaller screens */
+  }
+
+  .price {
+    font-size: 1em; /* Adjust font size for smaller screens */
+  }
+
+  .image {
+    height: auto; /* Allow image height to adjust */
+  }
+}

@@ -1,0 +1,267 @@
+/* * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
+  background-color: #fff;
+  padding: 20px;
+  margin: 0;
+}
+
+.container-admin {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: #000;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 24px;
+  width: 100%;
+}
+
+/* Table Styling */
+/* .table-container {
+  margin-top: 20px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+th,
+td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #000;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+.errorMsg {
+  color: #ff0000;
+  margin-bottom: 15px;
+} */
+
+/* Button Styling */
+/* .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  margin: 2px;
+  margin-right: 15px;
+  width: 100px;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #000;
+}
+
+.btn-danger {
+  background-color: #ff0000;
+}
+
+.btn-info {
+  background-color: #808080;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-add {
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: auto;
+}
+
+.btn-add:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+.btn-danger:hover {
+  background-color: #cc0000;
+}
+
+.btn-info:hover {
+  background-color: #666;
+} */
+
+/* View Page Specific Styles */
+/* .view-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-top: 4px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.view-container h2 {
+  color: #000;
+  font-size: 26px;
+  margin-bottom: 25px;
+  width: 100%;
+  text-align: center;
+} */
+
+/* .details {
+  margin-bottom: 25px;
+  font-size: 18px;
+  color: #000;
+  width: 100%;
+}
+
+.details p {
+  margin: 10px 0;
+}
+
+.details p strong {
+  font-weight: bold;
+  color: #000;
+}
+
+.btn-back {
+  background-color: #ff0000;
+}
+
+.btn-back:hover {
+  background-color: #cc0000;
+} */
+
+/* Form Styles (Add Student Page) */
+/* form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #000;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-save,
+.btn-update {
+  background-color: #000;
+}
+
+.btn-save:hover,
+.btn-update:hover {
+  background-color: #333;
+} */
+
+/* Responsive Design */
+/* @media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  th,
+  td {
+    padding: 10px 15px;
+  }
+
+  .btn {
+    padding: 8px 15px;
+    font-size: 12px;
+    width: auto;
+  }
+
+  .btn-add {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .view-container {
+    padding: 20px;
+  }
+
+  .view-container h2 {
+    font-size: 22px;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+.AdminnnnContaimner {
+  @media (max-width: 750px) {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+}

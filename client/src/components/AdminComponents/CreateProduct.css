@@ -1,0 +1,28 @@
+form{
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: 50px auto; 
+    background-color: white; 
+    border-radius: 8px;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  button[type="submit"]:hover {
+    background-color: black;
+    margin-left: 10px;
+    color: white;
+  }
+  
+  button[type="reset"]:hover{
+    background-color: black;
+    color: white;
+  }
+.state{
+    margin-right:70% ;
+}
