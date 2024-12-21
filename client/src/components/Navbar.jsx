@@ -5,6 +5,7 @@ import CartIcon from "../assets/Images/Cart1.png";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "../assets/Images/search.png";
+import LeftDrawer from "./DrawerPage/Navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -152,38 +153,7 @@ function Navbar() {
           />
         </div>
       </div>
-
-      {/* Add Order Button */}
-      {/* <div className="order-button">
-        <button onClick={goToProductPage} className="order-btn">
-          Order
-        </button>
-      </div> */}
-
-      <div className="links">
-        <span className="icon">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/contact">contact</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/signup">Sign Up</Link>
-          </li>
-        </ul>
-      </div>
+      <LeftDrawer />
     </div>
   );
 }

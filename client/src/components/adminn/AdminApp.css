@@ -1,4 +1,4 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -12,7 +12,7 @@ body {
   margin: 0;
 }
 
-.container {
+.container-admin {
   max-width: 900px;
   margin: 0 auto;
   background-color: #fff;
@@ -35,7 +35,7 @@ h2 {
 }
 
 /* Table Styling */
-.table-container {
+/* .table-container {
   margin-top: 20px;
   width: 100%;
   overflow-x: auto;
@@ -75,10 +75,10 @@ tr:hover {
 .errorMsg {
   color: #ff0000;
   margin-bottom: 15px;
-}
+} */
 
 /* Button Styling */
-.btn {
+/* .btn {
   display: inline-block;
   padding: 10px 20px;
   border: none;
@@ -140,10 +140,10 @@ tr:hover {
 
 .btn-info:hover {
   background-color: #666;
-}
+} */
 
 /* View Page Specific Styles */
-.view-container {
+/* .view-container {
   max-width: 600px;
   margin: 0 auto;
   background-color: #fff;
@@ -162,9 +162,9 @@ tr:hover {
   margin-bottom: 25px;
   width: 100%;
   text-align: center;
-}
+} */
 
-.details {
+/* .details {
   margin-bottom: 25px;
   font-size: 18px;
   color: #000;
@@ -186,10 +186,10 @@ tr:hover {
 
 .btn-back:hover {
   background-color: #cc0000;
-}
+} */
 
 /* Form Styles (Add Student Page) */
-form {
+/* form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -217,10 +217,10 @@ input {
 .btn-save:hover,
 .btn-update:hover {
   background-color: #333;
-}
+} */
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .container {
     padding: 15px;
   }

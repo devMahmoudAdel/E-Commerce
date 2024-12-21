@@ -45,27 +45,29 @@ form {
   align-items: center;
   gap: 10px;
 }
-input {
-
+.inputfield {
+display: flex;
+justify-content: space-between;
+align-items: center;
   width: 300px;
-  height: 30px;
+  height: 40px;
   /* border-radius: 6px; */
   border: none;
   color: black;
   font-size: 18px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #333;
   border-radius: 6px;
   outline: none;
   background-color: white;
 }
-input::placeholder{
+ input::placeholder .inputfield{
   color: #333;
   font-size: 10x;
 }
-input:focus {
-  /* border: 2px solid black; */
-  /* border-radius: 6px;/ */
+ input:focus .inputfield{
+  border: 2px solid black;
+  border-radius: 6px;
 }
 button.submit {
   width: 90%;
@@ -78,6 +80,9 @@ button.submit {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.2s;
+}
+.inputfield input {
+  width: 80%;
 }
 .forget {
   margin:10px 0;
@@ -123,4 +128,12 @@ button:hover {
 }
 .log-forgot a:hover{
   font-weight: bold; 
+}
+
+.password-level {
+  padding: 0;
+  margin: 10px 0;
+}
+.sub-password-level {
+
 }

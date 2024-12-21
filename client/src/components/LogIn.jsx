@@ -3,7 +3,10 @@ import "./signup.css";
 import "./login.css";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+import axios from "axios"; 
+function LogIn() {
 import Cookie from "js-cookie";
 function LogIn({ setToken }) {
   // State for form inputs
@@ -15,6 +18,10 @@ function LogIn({ setToken }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+    const [passwordVisible, setPasswordVisible] = useState(false);  
+    const togglePasswordVisibility = () => {
+      setPasswordVisible(!passwordVisible);
+    };
   // Handle input changes
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -87,22 +94,34 @@ function LogIn({ setToken }) {
       <p>Enter your details below</p>
       <div className="Form">
         <form onSubmit={handleFormSubmit}>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            placeholder="Email or phone number"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-            placeholder="Password"
-            required
-          />
+          <div className="inputfield">
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Email or phone number"
+              required
+            />
+          </div>
+          <div className="inputfield">
+            <input
+              type={passwordVisible ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="Password"
+              required
+            />
+            <span onClick={togglePasswordVisibility}>
+              {passwordVisible ? (
+                <VisibilityOffOutlinedIcon />
+              ) : (
+                <VisibilityOutlinedIcon />
+              )}
+            </span>
+          </div>
+
           <div className="log-forgot">
             <button className="submit" type="submit" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Log In"}
@@ -113,17 +132,15 @@ function LogIn({ setToken }) {
           </div>
         </form>
       </div>
-      {errorMessage && (
-        // Swal.fire({
-        //   icon: "error",
-        //   title: "Oops...",
-        //   text: { errorMessage },
-        //   customClass: {
-        //     confirmButton: "error-button", // Add a custom class for the confirm button
-        //   },
-        // })
-        <></>
-      )}
+      {errorMessage &&
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: { errorMessage },
+          customClass: {
+            confirmButton: "error-button", // Add a custom class for the confirm button
+          },
+        })}
       <Link to="/signup" className="forget">
         Don't have an account? <span>Sign Up</span>
       </Link>

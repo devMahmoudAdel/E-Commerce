@@ -31,7 +31,7 @@ export default function ItemTable(){
     },[])
 
     return(
-        <div className="container">
+        <div className="container-admin">
             <h2>Item Records</h2>
             <div className="table-container">
                 <Link to="item/create" className="btn btn-add">Add new Item</Link>

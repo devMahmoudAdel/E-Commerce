@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./signup.css";
 import SideImage2 from "../assets/Images/SideImage2.png";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { Alert } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -31,39 +33,24 @@ function SignUp({ setToken }) {
     phoneNumber: "",
     success: false,
   });
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible(!confirmPasswordVisible);
+  };
   // Validate password
   const validatePassword = (password) => {
     const regex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     return regex.test(password);
   };
-  const validatePasswordLevel = (password) => {
-    // Define criteria
-    const lengthCriteria = password.length >= 8;
-    const lowercaseCriteria = /[a-z]/.test(password);
-    const uppercaseCriteria = /[A-Z]/.test(password);
-    const numberCriteria = /\d/.test(password);
-    const specialCharacterCriteria = /[!@#$%^&*]/.test(password);
-
-    // Calculate strength
-    let strength = 0;
-
-    if (lengthCriteria) strength++;
-    if (lowercaseCriteria) strength++;
-    if (uppercaseCriteria) strength++;
-    if (numberCriteria) strength++;
-    if (specialCharacterCriteria) strength++;
-
-    // Return level based on strength
-    if (strength <= 2) {
-      return "Weak"; // Fails basic security
-    } else if (strength === 3 || strength === 4) {
-      return "Medium"; // Acceptable, but could improve
-    } else if (strength === 5) {
-      return "Strong"; // Best practice
-    }
-  };
+  useEffect(() => {
+    validatePassword(formData.password);
+  }, [formData.password]);
   // Handle form input change
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -170,68 +157,96 @@ function SignUp({ setToken }) {
         <p>Enter your details below</p>
         <div className="form">
           <form onSubmit={handleFormSubmit}>
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleInputChange}
-              placeholder="First Name"
-              required
-            />
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleInputChange}
-              placeholder="Last Name"
-              required
-            />
-            <input
-              type="text"
-              name="userName"
-              value={formData.userName}
-              onChange={handleInputChange}
-              placeholder="User Name"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Email"
-              required
-            />
-            <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              placeholder="Phone Number"
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              placeholder="Password"
-              required
-            />
+            <div className="inputfield">
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                placeholder="First Name"
+                required
+              />
+            </div>
+            <div className="inputfield">
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                placeholder="Last Name"
+                required
+              />
+            </div>
+            <div className="inputfield">
+              <input
+                type="text"
+                name="userName"
+                value={formData.userName}
+                onChange={handleInputChange}
+                placeholder="User Name"
+                required
+              />
+            </div>
+            <div className="inputfield">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div className="inputfield">
+              <input
+                type="tel"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                placeholder="Phone Number"
+                required
+              />
+            </div>
+            <div className="inputfield">
+              <input
+                type={passwordVisible ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="Password"
+                required
+              />
+              <span onClick={togglePasswordVisibility}>
+                {passwordVisible ? (
+                  <VisibilityOffOutlinedIcon />
+                ) : (
+                  <VisibilityOutlinedIcon />
+                )}
+              </span>
+            </div>
+            <div className="inputfield">
+              <input
+                type={confirmPasswordVisible ? "text" : "password"}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                placeholder="Confirm Password"
+                required
+              />
+              <span onClick={toggleConfirmPasswordVisibility}>
+                {confirmPasswordVisible ? (
+                  <VisibilityOffOutlinedIcon />
+                ) : (
+                  <VisibilityOutlinedIcon />
+                )}
+              </span>
+            </div>
+            
             {errorMessage.password && (
               <Alert className="alert" severity="error" color="error">
                 {errorMessage.password}
               </Alert>
             )}
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleInputChange}
-              placeholder="Confirm Password"
-              required
-            />
-            {/* <PasswordInput/> */}
             {errorMessage.confirmPassword && (
               <Alert className="alert" severity="error" color="error">
                 {errorMessage.confirmPassword}
