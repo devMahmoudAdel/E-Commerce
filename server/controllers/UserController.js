@@ -415,3 +415,8 @@ exports.reActiveUserForUser = asyncErrorHandler(async (req, res, next) => {
   if (!user) return res.status(404).json({ msg: "User not found" });
   res.status(200).json({ msg: "User is active", data: user });
 });
+
+exports.getAllUsers = asyncErrorHandler(async (req, res, next) => {
+  const users = await User.find();
+  res.status(200).json({ data: users });
+});

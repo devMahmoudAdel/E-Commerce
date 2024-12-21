@@ -1,10 +1,10 @@
 import axios from "axios";
 export const AddToCart = async (product) => {
   try {
-    await axios.post(`/user/addToCart/${product.id}`, {
-      item: product,
+    await axios.post(`/user/addToCart/${product._id}`).then((r) => {
+      console.log(r.data.data);
+      console.log(`Added ${product.Name} to the cart!`);
     });
-    console.log(`Added ${product.name} to the cart!`);
   } catch (error) {
     console.error("Error adding to cart:", error);
   }

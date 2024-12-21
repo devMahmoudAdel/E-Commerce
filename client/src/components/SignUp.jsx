@@ -5,8 +5,11 @@ import SideImage2 from "../assets/Images/SideImage2.png";
 import { Alert } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Cookie from "js-cookie";
+import Cookies from "js-cookie";
+
 // import PasswordInput from "./PasswordInput";
-function SignUp() {
+function SignUp({ setToken }) {
   // State for form inputs
   const [formData, setFormData] = useState({
     firstName: "",
@@ -18,7 +21,16 @@ function SignUp() {
     confirmPassword: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState({password:"",email:"",userName:"",firstName:"",lastName:"",confirmPassword:"",phoneNumber:"",success:false});
+  const [errorMessage, setErrorMessage] = useState({
+    password: "",
+    email: "",
+    userName: "",
+    firstName: "",
+    lastName: "",
+    confirmPassword: "",
+    phoneNumber: "",
+    success: false,
+  });
 
   // Validate password
   const validatePassword = (password) => {
@@ -26,23 +38,23 @@ function SignUp() {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     return regex.test(password);
   };
-  const validatePasswordLevel =(password)=>{
+  const validatePasswordLevel = (password) => {
     // Define criteria
     const lengthCriteria = password.length >= 8;
     const lowercaseCriteria = /[a-z]/.test(password);
     const uppercaseCriteria = /[A-Z]/.test(password);
     const numberCriteria = /\d/.test(password);
     const specialCharacterCriteria = /[!@#$%^&*]/.test(password);
-  
+
     // Calculate strength
     let strength = 0;
-  
+
     if (lengthCriteria) strength++;
     if (lowercaseCriteria) strength++;
     if (uppercaseCriteria) strength++;
     if (numberCriteria) strength++;
     if (specialCharacterCriteria) strength++;
-  
+
     // Return level based on strength
     if (strength <= 2) {
       return "Weak"; // Fails basic security
@@ -51,58 +63,80 @@ function SignUp() {
     } else if (strength === 5) {
       return "Strong"; // Best practice
     }
-  }
+  };
   // Handle form input change
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name] : value });
+    setFormData({ ...formData, [name]: value });
   };
 
   // Handle form submission
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const { firstName, lastName, userName, phoneNumber, email, password, confirmPassword } = formData;
-console.log(
-  firstName,
-  lastName,
-  userName,
-  phoneNumber,
-  email,
-  password,
-  confirmPassword
-);
+    const {
+      firstName,
+      lastName,
+      userName,
+      phoneNumber,
+      email,
+      password,
+      confirmPassword,
+    } = formData;
+    console.log(
+      firstName,
+      lastName,
+      userName,
+      phoneNumber,
+      email,
+      password,
+      confirmPassword
+    );
     if (!validatePassword(password)) {
-      setErrorMessage(errorMessage1=>({
-        ...errorMessage1,password:"Password must be like Pa$$w0rd123!"
-      }))
+      setErrorMessage((errorMessage1) => ({
+        ...errorMessage1,
+        password: "Password must be like Pa$$w0rd123!",
+      }));
       return;
     }
 
     if (password !== confirmPassword) {
-      setErrorMessage(errorMessage1=>({
-        ...errorMessage1,confirmPassword:"Passwords do not match."
-      }))
+      setErrorMessage((errorMessage1) => ({
+        ...errorMessage1,
+        confirmPassword: "Passwords do not match.",
+      }));
       return;
     }
-    setErrorMessage(errorMessage1=>({
-      ...errorMessage1,success: true
-    }))
+    setErrorMessage((errorMessage1) => ({
+      ...errorMessage1,
+      success: true,
+    }));
     // Submit data to the server
     try {
-      const response =await axios.post("/user/register", {
-        "firstName": firstName,
-        "lastName" : lastName,
-        "username" : userName,
-        "phoneNumber" : phoneNumber ,
-        "email" : email,
-        "password" : password,
-        "confirmPassword" :confirmPassword
-      },{
-        headers: {
-        "Content-Type": "application/json",
-      }})
-      
+      const response = await axios
+        .post(
+          "/user/register",
+          {
+            firstName: firstName,
+            lastName: lastName,
+            username: userName,
+            phoneNumber: phoneNumber,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          const t = response.data.token;
+          // const t = Cookie.get("jwt");
+          Cookie.set("jwt", t);
+          setToken(t);
+        });
 
       if (!response.ok) {
         throw new Error("Failed to sign up.");
@@ -114,14 +148,15 @@ console.log(
         icon: "success",
         title: "Account created successfully!",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
       console.log("API Response:", data);
     } catch (error) {
       console.error("SignUp Error:", error.message);
-      setErrorMessage(errorMessage1=>({
-        ...errorMessage1,success:"Failed to create account. Please try again later."
-      }))
+      setErrorMessage((errorMessage1) => ({
+        ...errorMessage1,
+        success: "Failed to create account. Please try again later.",
+      }));
     }
   };
 
@@ -202,7 +237,9 @@ console.log(
                 {errorMessage.confirmPassword}
               </Alert>
             )}
-            <button className="submit" type="submit">Sign Up</button>
+            <button className="submit" type="submit">
+              Sign Up
+            </button>
           </form>
         </div>
         <Link to="/login" className="forget">

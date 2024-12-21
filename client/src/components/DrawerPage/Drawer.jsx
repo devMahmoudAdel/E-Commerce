@@ -9,7 +9,7 @@ import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { PageContainer } from "@toolpad/core/PageContainer";
 import Grid from "@mui/material/Grid2";
-
+import Drawer from "@mui/material/Drawer";
 const NAVIGATION = [
   {
     kind: "header",
@@ -57,7 +57,6 @@ const NAVIGATION = [
 ];
 
 const demoTheme = extendTheme({
-  colorSchemes: { light: true, dark: true },
   colorSchemeSelector: "class",
   breakpoints: {
     values: {
