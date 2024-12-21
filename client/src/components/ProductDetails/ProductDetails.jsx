@@ -9,14 +9,16 @@ function ProductDetails({ props }) {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [rating, setRating] = useState(1);
-  const [comment, setComment] = useState('');
-  const [faildrating, setfaildrating] = useState('');
-
+  const [comment, setComment] = useState("");
+  const [faildrating, setfaildrating] = useState("");
+  const [ref, setRef] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://e-commerce-server-peach.vercel.app/product/get/${id}`);
+        const response = await axios.get(
+          `https://e-commerce-server-peach.vercel.app/product/get/${id}`
+        );
         setProduct(response.data.data);
       } catch (e) {
         console.log(e);
@@ -24,25 +26,30 @@ function ProductDetails({ props }) {
       }
     };
     fetchProduct();
-  }, [id]);
+  }, [id, ref]);
 
   const addReview = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch(`https://e-commerce-server-peach.vercel.app/product/setReview/${id}`, {
-        rating: rating,
-        comment: comment,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      const updatedProduct = response.data.data;
-      setProduct(updatedProduct);
-
+      const response = await axios
+        .patch(
+          `https://e-commerce-server-peach.vercel.app/product/setReview/${id}`,
+          {
+            rating: rating,
+            comment: comment,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then(() => {
+          setRef(!ref);
+        });
     } catch (err) {
       console.error("Failed to add review:", err);
-      setfaildrating('you already added rating before')
+      setfaildrating("you already added rating before");
     }
   };
 
@@ -93,7 +100,11 @@ function ProductDetails({ props }) {
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
               />
-              <button className="buy-button" disabled={!product.inStock} onClick={AddToCart}>
+              <button
+                className="buy-button"
+                disabled={!product.inStock}
+                onClick={AddToCart}
+              >
                 {product.inStock ? "Buy Now" : "Out of Stock"}
               </button>
               <button className="wishlist-button">❤</button>
@@ -133,7 +144,7 @@ function ProductDetails({ props }) {
                 required
               />
               <button type="submit" className="buy-button">
-                Add Review 
+                Add Review
               </button>
               <span className="faildrating">{faildrating}</span>
             </form>

@@ -21,7 +21,8 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("/product/getAll"); // Replace with your API endpoint
-        setProducts(response.data);
+        setProducts(response.data.data);
+        console.log(response.data.data);
       } catch (err) {
         setError("Failed to fetch products.");
       } finally {
@@ -47,9 +48,26 @@ const Products = () => {
         <div className="products-grid">
           {products &&
             products.length > 0 &&
-            products
-              .slice(0, showAll ? products.length : 10)
-              .map((product) => <></>)}
+            products.slice(0, showAll ? products.length : 10).map((product) => (
+              <>
+                <div key={product._id} className="top-rated-product-card">
+                  <img
+                    src={product.images?.[0]?.secure_url || "default-image.jpg"}
+                    alt={product.Name}
+                  />
+                  <h3>{product.Name}</h3>
+                  <p>{product.Brand}</p>
+                  <p>${product.price.toFixed(2)}</p>
+                  <p>Average Rating: {product.avgRating.toFixed(1)} / 5</p>
+                  {/*round 2 decimal*/}
+                  <button
+                    onClick={() => navigate(`/productdetails/${product._id}`)}
+                  >
+                    View Details
+                  </button>
+                </div>
+              </>
+            ))}
         </div>
       )}
 
