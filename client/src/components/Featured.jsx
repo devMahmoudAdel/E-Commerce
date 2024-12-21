@@ -53,8 +53,6 @@ const services = [
 function Featured() {
 
   return (
-
-    
     <div className="featured-container">
       <div className="products-container">
         <div className="products-header">

@@ -99,7 +99,8 @@
 }
 
 .product-info {
-  margin-top: 16px;
+  /* margin-top: 16px; */
+  width: 100%;
 }
 
 .product-name {
