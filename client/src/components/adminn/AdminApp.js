@@ -32,18 +32,15 @@ function AdminApp({ setToken }) {
     // { title: "GetAllAdressForUser", navigate: "GetAllAdressForUser" },
     // { title: "GetAllAdress", navigate: "GetAllAdress" },
     { title: "GetAllAdmins", navigate: "GetAllAdmins" }, //3
-    // { title: "Edituser", navigate: "Edituser" },
-    { title: "DeleteUser", navigate: "DeleteUser" }, //2
-    { title: "ReActiveUser", navigate: "ReActiveUser" }, //2
 
     ///begin
-
+    { title: "Edituser", navigate: "Edituser" },
+    { title: "DeleteUser", navigate: "DeleteUser" }, //2
+    { title: "ReActiveUser", navigate: "ReActiveUser" }, //2
     { title: "CreateProduct", navigate: "CreateProduct" }, //1
     { title: "EditAndDeleteProduct", navigate: "EditAndDeleteProduct" }, //1
-
     ////begin
 
-    // { title: "EditInverntoryStock", navigate: "EditInverntoryStock" },
     { title: "ChangeStatusOrder", navigate: "ChangeStatusOrder" }, //2
     {
       title: "ChangeDeliveryNumberOrder",
