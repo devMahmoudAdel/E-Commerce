@@ -1,6 +1,6 @@
 import { useState , useEffect} from "react";
 import {Link} from "react-router-dom";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import UrlPath from "./UrlPath";
 import axios from "axios";
 import "./cart.css";

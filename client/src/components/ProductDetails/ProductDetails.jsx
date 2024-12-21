@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
 import { AddToCart } from "../AddToCart";
-function ProductDetails({ props }) {
+function ProductDetails( props ) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);

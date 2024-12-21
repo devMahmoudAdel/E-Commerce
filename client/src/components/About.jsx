@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  LucideReact,
   Store,
   DollarSign,
   Users,
@@ -11,11 +12,13 @@ import {
   Headphones,
   Shield,
 } from "lucide-react";
-import "./About.css";
-
-import product1Image from "../assets/productsimages/product1.jpg";
-import product2Image from "../assets/productsimages/product2.jpg";
-import product3Image from "../assets/productsimages/product3.jpg";
+import "./about.css";
+import product1Image from "../assets/Images/image 51.jpg";
+import product2Image from "../assets/Images/image 52.jpg";
+import product3Image from "../assets/Images/image 53.jpg";
+import product4Image from "../assets/Images/image 54.jpg";
+import product5Image from "../assets/Images/image 55.jpg";
+import product6Image from "../assets/Images/image 56.jpg";
 
 const About = () => {
   const stats = [
@@ -43,8 +46,8 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: "Tom Cruise",
-      position: "Founder & Chairman",
+      name: "Hazem Hussein",
+      position: "الأسطى حازم نقاشة",
       image: product1Image,
       socials: [
         { type: "twitter", icon: <Twitter /> },
@@ -53,8 +56,8 @@ const About = () => {
       ],
     },
     {
-      name: "Emma Watson",
-      position: "Managing Director",
+      name: "Mahmoud Adel",
+      position: "الأسطى حودةالمعلم الكبير",
       image: product2Image,
       socials: [
         { type: "twitter", icon: <Twitter /> },
@@ -63,9 +66,39 @@ const About = () => {
       ],
     },
     {
-      name: "Will Smith",
-      position: "Product Designer",
+      name: "noor monfa5",
+      position: "منفاخ فكرة والفكرة لا تموت",
       image: product3Image,
+      socials: [
+        { type: "twitter", icon: <Twitter /> },
+        { type: "instagram", icon: <Instagram /> },
+        { type: "linkedin", icon: <Linkedin /> },
+      ],
+    },
+    {
+      name: "Capa",
+      position: " بتاع الشاي والقهوة",
+      image: product5Image,
+      socials: [
+        { type: "twitter", icon: <Twitter /> },
+        { type: "instagram", icon: <Instagram /> },
+        { type: "linkedin", icon: <Linkedin /> },
+      ],
+    },
+    {
+      name: "Omar Hassan",
+      position: "عامل النضافة ",
+      image: product4Image,
+      socials: [
+        { type: "twitter", icon: <Twitter /> },
+        { type: "instagram", icon: <Instagram /> },
+        { type: "linkedin", icon: <Linkedin /> },
+      ],
+    },
+    {
+      name: "Youssef Ahmed",
+      position: "الأسطى يوسف أحمد للنقاشة",
+      image: product6Image,
       socials: [
         { type: "twitter", icon: <Twitter /> },
         { type: "instagram", icon: <Instagram /> },
