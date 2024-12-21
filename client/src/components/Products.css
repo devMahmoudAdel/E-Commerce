@@ -1,13 +1,11 @@
 .products-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-
+  padding: 0 20px;
 }
 
 .products-header {
   margin-bottom: 32px;
-  text-align: center; /* Center align the header */
 }
 
 .products-label {
@@ -28,17 +26,19 @@
 }
 
 .product-card {
-  background-color: #ffffff; /* Ensure individual cards have a white background */
-  border-radius: 8px;
+  background-color: #f9fafb;
+  /* border-radius: 8px; */
   padding: 16px;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Ensure top alignment */
+  align-items: flex-start;
+  /* Remove box shadow */
 }
 
 .product-image-container {
   position: relative;
+  width: 100%;
 }
 
 .new-badge {
@@ -55,7 +55,7 @@
 
 .product-image {
   width: 100%;
-  height: 200px; /* Uniform image height */
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -80,7 +80,7 @@
   background-color: white;
   border: none;
   border-radius: 50%;
-  width: 42px;
+  width: 52px;
   height: 32px;
   display: flex;
   align-items: center;
@@ -99,26 +99,28 @@
 }
 
 .product-info {
-  margin-top: 16px;
+  /* margin-top: 16px; */
+  width: 100%;
+  ;
 }
 
 .product-name {
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 }
 
 .product-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 }
 
 .product-price {
-  color: #ff0000 !important; /* Ensure the color is applied */
+  color: #ef4444 !important;
   font-weight: 500;
-  font-size: 0.9em; 
+  font-size: 0.9em;
 }
 
 .product-rating {
