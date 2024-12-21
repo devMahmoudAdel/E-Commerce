@@ -24,8 +24,6 @@ import AdminApp from "./components/adminn/AdminApp";
 import EditProfile from "./components/profile/EditProfile";
 import Profile from "./components/profile/Profile";
 import Cookies from "js-cookie";
-import Admin from "./components/Admin/Admin";
-//adminn imports
 
 function App() {
   const [user, setUser] = useState(null);
@@ -65,7 +63,6 @@ function App() {
             </>
           }
         />
-        <Route path="drawer" element={<DashboardLayoutBasic />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
         <Route path="profile" element={<Profile />} />

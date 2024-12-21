@@ -1,6 +1,5 @@
 const express = require("express");
 const usercontroller = require("../controllers/UserController");
-const { route } = require("./OrderRoute");
 // controller import
 const router = express.Router();
 router.route("/register").post(usercontroller.register);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
 import product1Image from "../../assets/productsimages/product1.jpg";
 import product2Image from "../../assets/productsimages/product2.jpg";
@@ -10,38 +10,38 @@ import "./index.css";
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(true);
-   useEffect(() => {
-     const fetchWishlist = async () => {
-       try {
-         const response = await axios.get("/user/getwishList");
-         setWishlist(response.data);
-         setLoading(false);
-       } catch (error) {
-         console.error("Error fetching wishlist:", error);
-         setLoading(false);
-       }
-     };
-
-     fetchWishlist();
-   }, []);
-    const deleteWishlistItem = async (id) => {
+  useEffect(() => {
+    const fetchWishlist = async () => {
       try {
-        await axios.delete(`https://your-api-endpoint.com/wishlist/${id}`);
-        setWishlist(wishlist.filter((item) => item.id !== id));
+        const response = await axios.get("/user/getwishList");
+        setWishlist(response.data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error deleting wishlist item:", error);
+        console.error("Error fetching wishlist:", error);
+        setLoading(false);
       }
     };
-    const moveAllToCart = async () => {
-      try {
+
+    fetchWishlist();
+  }, []);
+  const deleteWishlistItem = async (id) => {
+    try {
+      await axios.delete(`https://your-api-endpoint.com/wishlist/${id}`);
+      setWishlist(wishlist.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting wishlist item:", error);
+    }
+  };
+  const moveAllToCart = async () => {
+    try {
       await axios.post("https://your-api-endpoint.com/cart/move-all", {
-      items: wishlist,
+        items: wishlist,
       });
       setWishlist([]);
-      } catch (error) {
-        console.error("Error moving items to cart:", error);
-      }
-    };
+    } catch (error) {
+      console.error("Error moving items to cart:", error);
+    }
+  };
   return (
     <Container
       sx={{
@@ -65,10 +65,8 @@ function Wishlist() {
         >
           Wishlist {`(${wishlist.length})`}
         </Typography>
-
         <button className="moveAllButton">Move All To Bag</button>
       </Box>
-
       <Box
         sx={{
           margin: "0 auto",
