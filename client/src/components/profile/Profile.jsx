@@ -1,20 +1,53 @@
-import "./profile.css"
-function Profile() {
-  return (
-    <div className="profile-container">
-        <div className="profile-card">
-            <div className="profile-image">
-                <img src="https://via.placeholder.com/120" alt="Profile Picture"/>
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './profile.css';
+
+const Profile = () => {
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get("/user/getMe", {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+                setUserData(response.data.data);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    if (!userData) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div className="profile-data">
+            <div className="profile-data-item">
+                <span>Username:</span> {userData.username}
             </div>
-            <div className="profile-info">
-                <h2>John Doe</h2>
-                <p>Email: john.doe@example.com</p>
-                <p>Phone: +123 456 7890</p>
+            <div className="profile-data-item">
+                <span>First Name:</span> {userData.firstName}
             </div>
-            <a href="#" className="edit-button">Edit Profile</a>
+            <div className="profile-data-item">
+                <span>Last Name:</span> {userData.lastName}
+            </div>
+            <div className="profile-data-item">
+                <span>Email:</span> {userData.email}
+            </div>
+            <div className="profile-data-item">
+                <span>Phone Number:</span> {userData.phoneNumber}
+            </div>
+            <div className="profile-data-item">
+                <span>Wallet Balance:</span> {userData.walletbalance}
+            </div>
         </div>
-    </div>
-  );
-}
+    );
+};
 
 export default Profile;
