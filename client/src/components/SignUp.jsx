@@ -5,8 +5,11 @@ import SideImage2 from "../assets/Images/SideImage2.png";
 import { Alert } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Cookie from "js-cookie";
+import Cookies from "js-cookie";
+
 // import PasswordInput from "./PasswordInput";
-function SignUp() {
+function SignUp({ setToken }) {
   // State for form inputs
   const [formData, setFormData] = useState({
     firstName: "",
@@ -110,23 +113,30 @@ function SignUp() {
     }));
     // Submit data to the server
     try {
-      const response = await axios.post(
-        "/user/register",
-        {
-          firstName: firstName,
-          lastName: lastName,
-          username: userName,
-          phoneNumber: phoneNumber,
-          email: email,
-          password: password,
-          confirmPassword: confirmPassword,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
+      const response = await axios
+        .post(
+          "/user/register",
+          {
+            firstName: firstName,
+            lastName: lastName,
+            username: userName,
+            phoneNumber: phoneNumber,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword,
           },
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          const t = response.data.token;
+          // const t = Cookie.get("jwt");
+          Cookie.set("jwt", t);
+          setToken(t);
+        });
 
       if (!response.ok) {
         throw new Error("Failed to sign up.");
@@ -227,7 +237,9 @@ function SignUp() {
                 {errorMessage.confirmPassword}
               </Alert>
             )}
-            <button className="submit" type="submit">Sign Up</button>
+            <button className="submit" type="submit">
+              Sign Up
+            </button>
           </form>
         </div>
         <Link to="/login" className="forget">

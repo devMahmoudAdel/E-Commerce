@@ -16,8 +16,8 @@ import Error404 from "../Error404/Error404";
 import MenuIcon from "@mui/icons-material/Menu";
 import CreateProduct from "../AdminComponents/CreateProduct";
 import EditProduct from "../AdminComponents/EditProduct";
-import DeleteProduct from "../AdminComponents/DeleteProduct";
-function AdminApp() {
+import EditProducttt from "../AdminComponents/EditProducttt";
+function AdminApp({ setToken }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const toggleDrawer = (newOpen) => () => {
@@ -39,8 +39,7 @@ function AdminApp() {
     ///begin
 
     { title: "CreateProduct", navigate: "CreateProduct" }, //1
-    { title: "EditProduct", navigate: "EditProduct" }, //1
-    { title: "DeleteProduct", navigate: "DeleteProduct" }, //1
+    { title: "EditAndDeleteProduct", navigate: "EditAndDeleteProduct" }, //1
 
     ////begin
 
@@ -151,8 +150,14 @@ function AdminApp() {
           })} */}
 
           <Route path="CreateProduct" element={<CreateProduct />} />
-          <Route path="EditProduct/:id" element={<EditProduct />} />
-          <Route path="DeleteProduct/:id" element={<DeleteProduct />} />
+          <Route path="CreateProduct" element={<CreateProduct />} />
+          {/* <Route path="EditProduct" element={<EditProductWithNoID />} /> */}
+          <Route path="EditAndDeleteProduct/" element={<EditProduct />} />
+          <Route
+            path="EditAndDeleteProduct/edit/:id"
+            element={<EditProducttt />}
+          />
+
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Box>

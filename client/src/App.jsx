@@ -27,14 +27,15 @@ import Cookies from "js-cookie";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
     const token = Cookies.get("jwt");
-    // setToken(localStorage.getItem("jwt"));
     if (token) {
+      setToken(token);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       async function fetchData() {
         const response = await axios.get("/user/getMe").then((d) => {
-          console.log(d.data);
           setUser(d.data);
         });
       }
@@ -42,12 +43,11 @@ function App() {
     } else {
       delete axios.defaults.headers.common["Authorization"];
     }
-  }, []);
+  }, [token]);
 
   axios.defaults.baseURL = "https://e-commerce-server-peach.vercel.app/";
-
+  // axios.defaults.baseURL = "http://localhost:3001";
   axios.defaults.withCredentials = true;
-
   return (
     <BrowserRouter>
       <Header />
@@ -63,8 +63,8 @@ function App() {
             </>
           }
         />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<LogIn />} />
+        <Route path="signup" element={<SignUp settoken={setToken} />} />
+        <Route path="login" element={<LogIn settoken={setToken} />} />
         <Route path="profile" element={<Profile />} />
         <Route path="editprofile" element={<EditProfile />} />
         <Route path="resetpassword" element={<ResetPassword />} />

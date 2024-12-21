@@ -4,7 +4,8 @@ import "./login.css";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-function LogIn() {
+import Cookie from "js-cookie";
+function LogIn({ setToken }) {
   // State for form inputs
   const [formData, setFormData] = useState({
     email: "",
@@ -28,18 +29,26 @@ function LogIn() {
 
     try {
       // Replace with your login API endpoint
-      const response = await axios.post(
-        "/user/login",
-        {
-          email: formData.email,
-          password: formData.password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
+      const response = await axios
+        .post(
+          "/user/login",
+          {
+            email: formData.email,
+            password: formData.password,
           },
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+          const t = response.data.token;
+          // const t = Cookie.get("jwt");
+          Cookie.set("jwt", t);
+          setToken(t);
+        });
 
       if (!response.ok) {
         const errorData = await response.json();
